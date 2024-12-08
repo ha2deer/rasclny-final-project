@@ -9,11 +9,17 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
   styleUrls: ['./auth.component.css'],
 })
 export class AuthComponent implements OnInit {
-  mode: 'login' | 'signup' = 'login'; // Default to 'login'
-  applyForm!: FormGroup; // Reactive form instance
-  isFormSubmitted = false; // Tracks form submission
-  disabled = false; // Disables the form during async actions
-  errors: any = null; // Tracks backend errors
+  mode: 'login' | 'signup' = 'login';
+  applyForm!: FormGroup;
+  isFormSubmitted = false;
+  disabled = false;
+  errors: any = null;
+
+  // Properties for form controls to avoid getter issues
+  usernameControl!: FormControl;
+  emailControl!: FormControl;
+  phoneControl!: FormControl;
+  passwordControl!: FormControl;
 
   constructor(
     private route: ActivatedRoute,
@@ -24,19 +30,18 @@ export class AuthComponent implements OnInit {
   ngOnInit(): void {
     this.initializeMode();
     this.initializeForm();
+    // **Assign form controls to component properties**
+    this.usernameControl = this.applyForm.get('username') as FormControl;
+    this.emailControl = this.applyForm.get('email') as FormControl;
+    this.phoneControl = this.applyForm.get('phone') as FormControl;
+    this.passwordControl = this.applyForm.get('password') as FormControl;
   }
 
-  /**
-   * Initializes the mode (login/signup) based on the route parameter.
-   */
   private initializeMode(): void {
     const modeParam = this.route.snapshot.paramMap.get('mode')?.trim().toLowerCase();
     this.mode = modeParam === 'signup' || modeParam === 'login' ? (modeParam as 'login' | 'signup') : 'login';
   }
 
-  /**
-   * Initializes the reactive form with validation rules.
-   */
   private initializeForm(): void {
     this.applyForm = new FormGroup({
       email: new FormControl('', [
@@ -50,7 +55,6 @@ export class AuthComponent implements OnInit {
       ]),
     });
 
-    // Add additional controls if in signup mode
     if (this.mode === 'signup') {
       this.applyForm.addControl('username', new FormControl('', [
         Validators.required,
@@ -64,9 +68,6 @@ export class AuthComponent implements OnInit {
     }
   }
 
-  /**
-   * Handles form submission for login or signup.
-   */
   async submitHandler(): Promise<void> {
     this.isFormSubmitted = true;
     this.disabled = true;
@@ -85,9 +86,6 @@ export class AuthComponent implements OnInit {
     }
   }
 
-  /**
-   * Handles login functionality.
-   */
   private handleLogin({ email, password }: any): void {
     this.auth.login(email, password).subscribe({
       next: (res: any) => {
@@ -95,16 +93,12 @@ export class AuthComponent implements OnInit {
         this.router.navigate(['/home']);
       },
       error: (err) => {
-        console.error('Login error:', err);
         this.errors = err.error;
         this.disabled = false;
       },
     });
   }
 
-  /**
-   * Handles signup functionality.
-   */
   private handleSignup({ username, email, password, phone, gender }: any): void {
     this.auth.register(username, email, password, phone, gender).subscribe({
       next: (res: any) => {
@@ -112,9 +106,7 @@ export class AuthComponent implements OnInit {
         this.router.navigate(['/home']);
       },
       error: (err) => {
-        console.error('Signup error:', err);
         if (err.error && err.error.error) {
-          // Map backend validation errors to form controls
           Object.keys(err.error.error).forEach((key) => {
             const control = this.applyForm.get(key);
             if (control) {
@@ -129,28 +121,12 @@ export class AuthComponent implements OnInit {
     });
   }
 
-  /**
-   * Checks the validity of a specific form control.
-   * @param controlName Name of the form control to validate.
-   * @returns True if the control is invalid and has been touched or dirty.
-   */
   isValid(controlName: string): boolean {
     const control = this.applyForm.get(controlName);
-
-    // Check if the control exists and is invalid
-    if (!control) {
-      console.warn(`Form control '${controlName}' does not exist.`);
-      return false; // Return false for non-existing controls
-    }
-
-    // Return true if the control is invalid and has been touched, dirty, or the form is submitted
+    if (!control) return false;
     return control.invalid && (this.isFormSubmitted || control.touched || control.dirty);
   }
 
-  /**
-   * Navigates to the specified mode (login/signup) and resets the form.
-   * @param mode The mode to navigate to.
-   */
   navigateTo(mode: 'login' | 'signup'): void {
     this.router.navigate([`/auth/${mode}`]);
     this.mode = mode;
@@ -158,22 +134,4 @@ export class AuthComponent implements OnInit {
     this.isFormSubmitted = false;
     this.initializeForm();
   }
-
-
-  get usernameControl(): FormControl {
-    return this.applyForm.get('username') as FormControl;
-  }
-  
-  get emailControl(): FormControl {
-    return this.applyForm.get('email') as FormControl;
-  }
-  
-  get phoneControl(): FormControl {
-    return this.applyForm.get('phone') as FormControl;
-  }
-  
-  get passwordControl(): FormControl {
-    return this.applyForm.get('password') as FormControl;
-  }
-  
 }
