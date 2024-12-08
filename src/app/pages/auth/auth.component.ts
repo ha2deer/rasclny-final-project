@@ -125,7 +125,7 @@ export class AuthComponent implements OnInit {
     } 
 
     // ✅ Fallback to a generic message for unknown errors
-    this.errors = { message: 'An unexpected error occurred. Please try again.' };
+    this.errors = { message: 'Failed to login. Please check your credentials.' };
   }
 
   isValid(controlName: string): boolean {
