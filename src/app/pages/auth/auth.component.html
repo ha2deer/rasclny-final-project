@@ -1,7 +1,7 @@
 <div class="container mt-5 mb-5">
   <div class="row align-items-center">
     <!-- Authentication Image -->
-    <div class="col-lg-6 d-none d-lg-block text-center">
+    <div class="col-lg-6 d-none d-lg-flex justify-content-center">
       <img src="assets/auth.png" alt="Authentication Image" class="img-fluid" style="max-height: 400px;" />
     </div>
 
@@ -30,9 +30,9 @@
                 placeholder="Enter your username"
               />
               <div *ngIf="isValid('username')" class="text-danger">
-                <small *ngIf="usernameControl.errors?.['required']">Username is required.</small>
-                <small *ngIf="usernameControl.errors?.['serverError']">
-                  {{ usernameControl.errors?.['serverError'] }}
+                <small *ngIf="usernameControl?.errors?.['required']">Username is required.</small>
+                <small *ngIf="usernameControl?.errors?.['serverError']">
+                  {{ usernameControl?.errors?.['serverError'] }}
                 </small>
               </div>
             </div>
@@ -49,15 +49,15 @@
               />
               <div
                 *ngIf="
-                  emailControl.invalid &&
-                  (isFormSubmitted || emailControl.touched || emailControl.dirty)
+                  emailControl?.invalid &&
+                  (isFormSubmitted || emailControl?.touched || emailControl?.dirty)
                 "
                 class="text-danger"
               >
-                <small *ngIf="emailControl.errors?.['required']">Email is required.</small>
-                <small *ngIf="emailControl.errors?.['email']">Must be a valid email address.</small>
-                <small *ngIf="emailControl.errors?.['serverError']">
-                  {{ emailControl.errors?.['serverError'] }}
+                <small *ngIf="emailControl?.errors?.['required']">Email is required.</small>
+                <small *ngIf="emailControl?.errors?.['email']">Must be a valid email address.</small>
+                <small *ngIf="emailControl?.errors?.['serverError']">
+                  {{ emailControl?.errors?.['serverError'] }}
                 </small>
               </div>
             </div>
@@ -73,10 +73,10 @@
                 placeholder="Enter your phone number"
               />
               <div *ngIf="isValid('phone')" class="text-danger">
-                <small *ngIf="phoneControl.errors?.['required']">Phone number is required.</small>
-                <small *ngIf="phoneControl.errors?.['pattern']">Invalid phone number format.</small>
-                <small *ngIf="phoneControl.errors?.['serverError']">
-                  {{ phoneControl.errors?.['serverError'] }}
+                <small *ngIf="phoneControl?.errors?.['required']">Phone number is required.</small>
+                <small *ngIf="phoneControl?.errors?.['pattern']">Invalid phone number format.</small>
+                <small *ngIf="phoneControl?.errors?.['serverError']">
+                  {{ phoneControl?.errors?.['serverError'] }}
                 </small>
               </div>
             </div>
@@ -106,21 +106,21 @@
               />
               <div
                 *ngIf="
-                  passwordControl.invalid &&
-                  (isFormSubmitted || passwordControl.touched || passwordControl.dirty)
+                  passwordControl?.invalid &&
+                  (isFormSubmitted || passwordControl?.touched || passwordControl?.dirty)
                 "
                 class="text-danger"
               >
-                <small *ngIf="passwordControl.errors?.['required']">Password is required.</small>
-                <small *ngIf="passwordControl.errors?.['minlength']">Password must be at least 6 characters.</small>
-                <small *ngIf="passwordControl.errors?.['serverError']">
-                  {{ passwordControl.errors?.['serverError'] }}
+                <small *ngIf="passwordControl?.errors?.['required']">Password is required.</small>
+                <small *ngIf="passwordControl?.errors?.['minlength']">Password must be at least 6 characters.</small>
+                <small *ngIf="passwordControl?.errors?.['serverError']">
+                  {{ passwordControl?.errors?.['serverError'] }}
                 </small>
               </div>
             </div>
 
             <!-- Submit Button -->
-            <button type="submit" class="btn btn-success w-100" [disabled]="disabled">
+            <button type="submit" class="btn btn-success btn-block" [disabled]="disabled">
               {{ mode === 'signup' ? 'Sign Up' : 'Sign In' }}
             </button>
           </form>

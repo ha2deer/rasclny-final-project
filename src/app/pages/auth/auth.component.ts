@@ -135,7 +135,7 @@ export class AuthComponent implements OnInit {
    * @returns True if the control is invalid and has been touched or dirty.
    */
   isValid(controlName: string): boolean {
-    const control = this.applyForm.get(controlName) as FormControl;
+    const control = this.applyForm.get(controlName);
 
     // Check if the control exists and is invalid
     if (!control) {
@@ -159,22 +159,21 @@ export class AuthComponent implements OnInit {
     this.initializeForm();
   }
 
-  /**
-   * **Getters for Form Controls** to avoid null-check warnings (NG8107)
-   */
+
   get usernameControl(): FormControl {
-    return this.applyForm.controls['username'] as FormControl;
+    return this.applyForm.get('username') as FormControl;
   }
-
+  
   get emailControl(): FormControl {
-    return this.applyForm.controls['email'] as FormControl;
+    return this.applyForm.get('email') as FormControl;
   }
-
+  
   get phoneControl(): FormControl {
-    return this.applyForm.controls['phone'] as FormControl;
+    return this.applyForm.get('phone') as FormControl;
   }
-
+  
   get passwordControl(): FormControl {
-    return this.applyForm.controls['password'] as FormControl;
+    return this.applyForm.get('password') as FormControl;
   }
+  
 }
