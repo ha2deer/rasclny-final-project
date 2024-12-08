@@ -15,12 +15,6 @@ export class AuthComponent implements OnInit {
   disabled = false;
   errors: any = null;
 
-  // Properties for form controls to avoid getter issues
-  usernameControl!: FormControl;
-  emailControl!: FormControl;
-  phoneControl!: FormControl;
-  passwordControl!: FormControl;
-
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -30,11 +24,6 @@ export class AuthComponent implements OnInit {
   ngOnInit(): void {
     this.initializeMode();
     this.initializeForm();
-    // **Assign form controls to component properties**
-    this.usernameControl = this.applyForm.get('username') as FormControl;
-    this.emailControl = this.applyForm.get('email') as FormControl;
-    this.phoneControl = this.applyForm.get('phone') as FormControl;
-    this.passwordControl = this.applyForm.get('password') as FormControl;
   }
 
   private initializeMode(): void {
@@ -55,6 +44,7 @@ export class AuthComponent implements OnInit {
       ]),
     });
 
+    // Add additional controls if in signup mode
     if (this.mode === 'signup') {
       this.applyForm.addControl('username', new FormControl('', [
         Validators.required,
@@ -93,7 +83,7 @@ export class AuthComponent implements OnInit {
         this.router.navigate(['/home']);
       },
       error: (err) => {
-        this.errors = err.error;
+        this.handleError(err);
         this.disabled = false;
       },
     });
@@ -106,19 +96,36 @@ export class AuthComponent implements OnInit {
         this.router.navigate(['/home']);
       },
       error: (err) => {
-        if (err.error && err.error.error) {
-          Object.keys(err.error.error).forEach((key) => {
-            const control = this.applyForm.get(key);
-            if (control) {
-              control.setErrors({ serverError: err.error.error[key][0] });
-            }
-          });
-        } else {
-          this.errors = err.error;
-        }
+        this.handleError(err);
         this.disabled = false;
       },
     });
+  }
+
+  /**
+   * Handles different types of errors returned from the backend.
+   * It displays global errors and field-specific errors.
+   */
+  private handleError(err: any): void {
+    // ✅ Handle Global Errors (like "Invalid email or password.")
+    if (err?.error?.error) {
+      this.errors = { message: err.error.error };
+      return;
+    } 
+
+    // ✅ Handle Field-Specific Errors (like email, username, etc.)
+    if (err?.error) {
+      Object.keys(err.error).forEach((key) => {
+        const control = this.applyForm.get(key);
+        if (control) {
+          control.setErrors({ serverError: err.error[key] });
+        }
+      });
+      return;
+    } 
+
+    // ✅ Fallback to a generic message for unknown errors
+    this.errors = { message: 'An unexpected error occurred. Please try again.' };
   }
 
   isValid(controlName: string): boolean {
