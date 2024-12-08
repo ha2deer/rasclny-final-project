@@ -1,0 +1,46 @@
+div {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #1f1f1f;
+}
+
+input {
+  width: 364px;
+  height: 46px;
+  padding: 12px 13px;
+  margin-top: 3px;
+  border: 1px solid #e0e0e0;
+  border-radius: 2px;
+  font-size: 14px;
+  line-height: 20px;
+  color: #1f1f1f;
+}
+.email {
+  position: absolute;
+  left: 331px;
+  top: 20px;
+}
+.password {
+  position: absolute;
+  left: 331px;
+  top: 18px;
+  cursor: pointer;
+}
+@media only screen and (max-width: 420px) {
+  input {
+    width: auto;
+  }
+  .email {
+    left: 170px;
+  }
+  .password {
+    left: 170px;
+  }
+}

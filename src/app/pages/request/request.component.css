@@ -1,0 +1,71 @@
+.Request-container {
+    height: fit-content;
+    padding: 70px;
+    display: flex;
+    align-items: stretch;
+    gap: 50px;
+    flex-wrap: nowrap; /* Prevent wrapping */
+  }
+  
+  .cartProducts {
+    padding: 30px;
+    width: 70%;
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .formContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30%; /* Ensure this takes up the remaining space */
+  }
+  
+  .cart-item {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .cardd {
+
+    scrollbar-width: thin;
+    scrollbar-color: #008000 #f0f0f0; /* Green thumb on light grey track */
+    margin: 30px;
+  }
+  
+  /* For Webkit browsers (Chrome, Safari) */
+  .cardd::-webkit-scrollbar {
+    width: 8px;
+    border-radius: 8px;
+  }
+  
+  .cardd::-webkit-scrollbar-thumb {
+    background-color: #008000; /* Green scrollbar thumb */
+    border-radius: 10px;
+  }
+  
+  .cardd::-webkit-scrollbar-track {
+    background: #f0f0f0; /* Light grey scrollbar track */
+    border-radius: 10px;
+  }
+  
+  /* Media queries for responsiveness */
+  @media (max-width: 768px) {
+    .Request-container {
+    height: fit-content;
+    padding: 20px;
+      flex-direction: column; /* Stack elements vertically */
+    }
+  
+    .cartProducts, .formContainer {
+      width: 100%;
+      padding: 10px;
+    }
+    .cardd {
+      overflow: visible;
+    }
+  }
+  

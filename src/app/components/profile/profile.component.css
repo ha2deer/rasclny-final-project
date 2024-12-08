@@ -1,0 +1,78 @@
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+  }
+  
+  .profile-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+  }
+  
+  .profile-container {
+    background: white;
+    padding: 40px; 
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 50%; 
+    min-height: 60%; 
+    text-align: center;
+  }
+  
+  .profile-container h2 {
+    font-size: 30px; 
+    color: #4caf50;
+    margin-bottom: 20px;
+  }
+  
+  .profile-container strong {
+    font-size: 18px; 
+    margin: 15px 0; 
+    color: #333; 
+    font-weight: bold; 
+  }
+  .profile-container p {
+    font-size: 18px; 
+    margin: 15px 0;
+    color: #333;
+  }
+  
+  .edit-btn {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 200px;
+    transition: all 0.3s ease;
+    margin-top: 20px; 
+  }
+  
+  .edit-btn:hover {
+    background-color: #45a049;
+  }
+  
+  /* Responsive Design */
+  @media screen and (max-width: 768px) {
+    .profile-container {
+      width: 90%; /* تقليل العرض للشاشات الصغيرة */
+      min-height: 70%; /* تكبير الطول قليلاً */
+      padding: 20px; /* تقليل الحواف الداخلية */
+    }
+  
+    .profile-container p {
+      font-size: 16px;
+    }
+  
+    .edit-btn {
+      padding: 10px 15px;
+      font-size: 14px;
+    }
+  }
+  

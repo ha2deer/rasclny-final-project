@@ -1,0 +1,56 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+  }
+  .section1 .lyer {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .section2
+  {
+    background-color: #f7f7f7;
+  }
+  
+  
+  .section2 .icon {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .section2 .text
+  {
+    box-shadow: -1px 2px 3px black;
+  }
+  
+  .section2 button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+  }
+  .about{
+    line-height: 25px;
+  }
+  .btn-success {
+    background-color: #28a745;
+    border: none;
+    transition: .8s;
+  }
+  
+  .btn-outline-dark {
+    border: 1px solid #28a745;
+    color: #28a745;
+    transition: .8s;
+  }
+  .btn-outline-dark:hover {
+    color: white;
+    background-color: #28a745;
+  }
+  .btn:hover {
+    opacity: 0.9;
+  }
+  

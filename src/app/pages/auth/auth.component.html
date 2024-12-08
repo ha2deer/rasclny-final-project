@@ -1,0 +1,143 @@
+<div class="container mt-5 mb-5">
+  <div class="row align-items-center">
+    <!-- Authentication Image -->
+    <div class="col-lg-6 d-none d-lg-block text-center">
+      <img src="assets/auth.png" alt="Authentication Image" class="img-fluid" style="max-height: 400px;" />
+    </div>
+
+    <!-- Form Section -->
+    <div class="col-lg-6">
+      <div class="card shadow border-0">
+        <div class="card-body">
+          <!-- Form Title -->
+          <h3 class="card-title text-center mb-4">{{ mode === 'signup' ? 'Sign Up' : 'Sign In' }}</h3>
+
+          <!-- Form -->
+          <form [formGroup]="applyForm" (ngSubmit)="submitHandler()">
+            <!-- Error Message Display -->
+            <div *ngIf="errors" class="alert alert-danger">
+              {{ errors.message }}
+            </div>
+
+            <!-- Username Field (Visible in Signup Mode) -->
+            <div *ngIf="mode === 'signup'" class="mb-3">
+              <label for="username" class="form-label">Username</label>
+              <input
+                formControlName="username"
+                id="username"
+                type="text"
+                class="form-control"
+                placeholder="Enter your username"
+              />
+              <div *ngIf="isValid('username')" class="text-danger">
+                <small *ngIf="applyForm.controls['username']?.errors?.['required']">Username is required.</small>
+                <small *ngIf="applyForm.controls['username']?.errors?.['serverError']">
+                  {{ applyForm.controls['username']?.errors?.['serverError'] }}
+                </small>
+              </div>
+            </div>
+
+            <!-- Email Field -->
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input
+                formControlName="email"
+                id="email"
+                type="email"
+                class="form-control"
+                placeholder="name@email.com"
+              />
+              <div
+                *ngIf="
+                  applyForm.controls['email']?.invalid &&
+                  (isFormSubmitted || applyForm.controls['email']?.touched || applyForm.controls['email']?.dirty)
+                "
+                class="text-danger"
+              >
+                <small *ngIf="applyForm.controls['email']?.errors?.['required']">Email is required.</small>
+                <small *ngIf="applyForm.controls['email']?.errors?.['email']">Must be a valid email address.</small>
+                <small *ngIf="applyForm.controls['email']?.errors?.['serverError']">
+                  {{ applyForm.controls['email']?.errors?.['serverError'] }}
+                </small>
+              </div>
+            </div>
+
+            <!-- Phone Field (Visible in Signup Mode) -->
+            <div *ngIf="mode === 'signup'" class="mb-3">
+              <label for="phone" class="form-label">Phone</label>
+              <input
+                formControlName="phone"
+                id="phone"
+                type="text"
+                class="form-control"
+                placeholder="Enter your phone number"
+              />
+              <div *ngIf="isValid('phone')" class="text-danger">
+                <small *ngIf="applyForm.controls['phone']?.errors?.['required']">Phone number is required.</small>
+                <small *ngIf="applyForm.controls['phone']?.errors?.['pattern']">Invalid phone number format.</small>
+                <small *ngIf="applyForm.controls['phone']?.errors?.['serverError']">
+                  {{ applyForm.controls['phone']?.errors?.['serverError'] }}
+                </small>
+              </div>
+            </div>
+
+            <!-- Gender Field (Visible in Signup Mode) -->
+            <div *ngIf="mode === 'signup'" class="mb-3">
+              <label for="gender" class="form-label">Select Gender</label>
+              <select formControlName="gender" id="gender" class="form-select">
+                <option value="" disabled>Select your gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
+              <div *ngIf="isValid('gender')" class="text-danger">
+                <small *ngIf="applyForm.controls['gender']?.errors?.['required']">Gender is required.</small>
+              </div>
+            </div>
+
+            <!-- Password Field -->
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input
+                formControlName="password"
+                id="password"
+                type="password"
+                class="form-control"
+                placeholder="Enter your password"
+              />
+              <div
+                *ngIf="
+                  applyForm.controls['password']?.invalid &&
+                  (isFormSubmitted || applyForm.controls['password']?.touched || applyForm.controls['password']?.dirty)
+                "
+                class="text-danger"
+              >
+                <small *ngIf="applyForm.controls['password']?.errors?.['required']">Password is required.</small>
+                <small *ngIf="applyForm.controls['password']?.errors?.['minlength']">Password must be at least 6 characters.</small>
+                <small *ngIf="applyForm.controls['password']?.errors?.['serverError']">
+                  {{ applyForm.controls['password']?.errors?.['serverError'] }}
+                </small>
+              </div>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-success w-100" [disabled]="disabled">
+              {{ mode === 'signup' ? 'Sign Up' : 'Sign In' }}
+            </button>
+          </form>
+
+          <!-- Navigation Links -->
+          <div class="text-center mt-3">
+            <p *ngIf="mode === 'signup'">
+              Already have an account?
+              <a (click)="navigateTo('login')" class="text-success" style="cursor: pointer;">Log In</a>
+            </p>
+            <p *ngIf="mode === 'login'">
+              Don't have an account?
+              <a (click)="navigateTo('signup')" class="text-success" style="cursor: pointer;">Sign Up</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,361 @@
+/* Core styles */
+.contan{
+  width: 100%;
+  padding: 70px;
+}
+.flex{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  gap:90px;
+}
+.cont-categ{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  gap:30px;
+}
+.last-categ{
+width: 100%;
+display: flex;
+justify-content: space-evenly;
+align-items: center;
+}
+.posetion{
+  position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.5); 
+    z-index: 1;
+}
+.flex .food{
+  background: url('/assets/rasclny-images/pexels-ella-olsson-572949-1640774_1.jpg');
+ 
+  background-position: center center !important;
+ 
+}
+.flex .plastic{
+  background: url('/assets/rasclny-images/pexels-magda-ehlers-pexels-2547565.jpg'), #E8F5E9 ;  /* مش بتظهر */
+  background-position: center center !important;
+}
+.paper{
+  background: url('/assets/rasclny-images/paperr.jpg'), #E8F5E9;
+  background-position: center center; 
+}
+.metal{
+  background: url('/assets/rasclny-images/Metall.jpg'), #E8F5E9;
+ 
+  background-position: center center;
+
+}
+.Glass{
+  background: url('/assets/rasclny-images/tockCake-Chilled Glass Bottle_1728067927.jpg'), #E8F5E9;
+  background-position: center center;
+}
+.card-container {
+  width: 300px;
+  height: 300px;
+  position: relative;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+	background-size: 400% 400%;	 /* animation: gradient 15s ease infinite; */
+}
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  cursor: pointer;
+}
+
+.card .front-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  position: relative;
+  z-index: 3;
+}
+
+.card .front-content p {
+  font-size: 32px;
+  font-weight: 700;
+  opacity: 1;
+  background: linear-gradient(
+    to right top,
+    #051937,
+    #004d7a,
+    #008793,
+    #00bf72,
+    #a8eb12
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.card .content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  text-align: center;
+  gap: 10px;
+  background: linear-gradient(
+    to right top,
+    #051937,
+    #004d7a,
+    #008793,
+    #00bf72,
+    #a8eb12
+  );
+  color: #e8e8e8;
+  padding: 20px;
+  line-height: 1.5;
+  border-radius: 5px;
+  pointer-events: none;
+  transform: translateX(96%);
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+ 
+  z-index: 7;
+}
+
+.card .content .heading {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.card:hover .content {
+  transform: translateY(0);
+}
+
+.card:hover .front-content {
+  transform: translateX(20%);
+  position: relative;
+  z-index: 3;
+}
+
+.card:hover .front-content p {
+  opacity: 0;
+}
+
+.loader {
+  width: 50px;
+  aspect-ratio: 1;
+  display: grid;
+  border: 4px solid #0000;
+  border-radius: 50%;
+  border-right-color: #25b09b;
+  animation: l15 1s infinite linear;
+  position: relative;
+  z-index: 3;
+}
+
+.loader::before,
+.loader::after {
+  content: '';
+  grid-area: 1/1;
+  margin: 2px;
+  border: inherit;
+  border-radius: 50%;
+  animation: l15 2s infinite;
+  position: relative;
+  z-index: 4;
+}
+
+.loader::after {
+  margin: 8px;
+  animation-duration: 3s;
+ 
+}
+
+@keyframes l15 {
+  100% {
+    transform: rotate(1turn);
+  }
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+  .card-container {
+    margin: 0 auto; /* Center the card */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 330px) {
+  .card-container {
+    width: 280px;
+  }
+}
+
+
+
+
+
+
+
+
+
+/* Core styles */
+/* .card-container {
+  width: 300px;
+  height: 300px;
+  position: relative;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  cursor: pointer;
+}
+
+.card .front-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.card .front-content p {
+  font-size: 32px;
+  font-weight: 700;
+  opacity: 1;
+  background: linear-gradient(
+    to right top,
+    #051937,
+    #004d7a,
+    #008793,
+    #00bf72,
+    #a8eb12
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.card .content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 10px;
+  background: linear-gradient(
+    to right top,
+    #051937,
+    #004d7a,
+    #008793,
+    #00bf72,
+    #a8eb12
+  );
+  color: #e8e8e8;
+  padding: 20px;
+  line-height: 1.5;
+  border-radius: 5px;
+  pointer-events: none;
+  transform: translateX(96%);
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.card .content .heading {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.card:hover .content {
+  transform: translateY(0);
+}
+
+.card:hover .front-content {
+  transform: translateX(20%);
+}
+
+.card:hover .front-content p {
+  opacity: 0;
+}
+
+.loader {
+  width: 50px;
+  aspect-ratio: 1;
+  display: grid;
+  border: 4px solid #0000;
+  border-radius: 50%;
+  border-right-color: #25b09b;
+  animation: l15 1s infinite linear;
+}
+
+.loader::before,
+.loader::after {
+  content: '';
+  grid-area: 1/1;
+  margin: 2px;
+  border: inherit;
+  border-radius: 50%;
+  animation: l15 2s infinite;
+}
+
+.loader::after {
+  margin: 8px;
+  animation-duration: 3s;
+}
+
+@keyframes l15 {
+  100% {
+    transform: rotate(1turn);
+  }
+}
+
+
+@media (max-width: 768px) {
+  .card-container {
+    margin: 0 auto; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 330px) {
+  .card-container {
+    width: 280px;
+  }
+} */

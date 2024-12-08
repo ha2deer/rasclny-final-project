@@ -1,0 +1,215 @@
+/* Footer Styling */
+footer {
+  background-color: #66AD5F;
+  padding: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.row{
+  display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+.footer-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+/* First Div (Categories) */
+.footer-section {
+  flex: 1;
+  margin: 10px 10px; /* Reduced margin to bring divs closer */
+ 
+  
+}
+
+.footer-section h2 {
+  line-height: 60px;
+  color: black;
+}
+
+/* Second Div (Social Media) */
+.footer-sectionTwo {
+  
+  margin-top: 10px; 
+   /* border-right: 3px rgb(105, 105, 105) solid;  */
+}
+/* .number{
+  color:white;
+} */
+.app-button{
+  width: 200px;
+  height: 60px;
+  border-radius: 10px;
+  background-color: #528a4c;
+  cursor: pointer;
+}
+.app-button:hover{
+  background-color: #3e8e41;
+}
+.app-button p,h1{
+  color:white
+}
+.footer-sectionFour{
+  flex: 3; 
+  /* margin: 10px 10px; */
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+   justify-content: space-evenly;
+   /* border-right: 3px rgb(105, 105, 105) solid; */
+   padding-right: 30px;
+}
+
+.footer-sectionTwo h2 {
+  line-height: 60px;
+  color: black;
+}
+zz
+.arrow-list {
+  list-style: none;
+  padding-left: 20px;
+}
+
+.arrow-list li {
+  position: relative;
+  padding-left: 20px;
+  line-height: 25px;
+  color: black;
+}
+.arrow-list li:hover{
+
+color: white;
+cursor: pointer;
+}
+
+
+/* Social Media Icons Section */
+.social {
+  display: flex;
+}
+
+.facebook-logo,
+.instagram-logo,
+.tiktok-logo {
+  width: 25px;
+  height: 25px;
+  z-index: 2;
+}
+
+.social-circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 5px;
+  position: relative;
+  outline: none;
+  border: none;
+  overflow: hidden;
+}
+
+.clip-circle {
+  width: 55px;
+  height: 55px;
+  border-radius: 100%;
+  position: absolute;
+  z-index: 1;
+  clip-path: circle(0px at 50% 50%);
+  outline: none;
+  border: none;
+  transition: all 0.5s ease-out;
+}
+
+.facebook {
+  background-color: #1a76d2;
+}
+.logo{
+  width: 35px;
+  height: 35px;
+}
+.instagram {
+  background: radial-gradient(
+    circle at 30% 107%,
+    #fdf497 0%,
+    #fdf497 5%,
+    #fd5949 45%,
+    #d6249f 60%,
+    #285aeb 90%
+  );
+}
+.linkedin{
+  margin-right: 5px;
+}
+.tiktok {
+  background: black;
+}
+
+.social-circle:hover .clip-circle {
+  clip-path: circle(60px at 50% 50%);
+  transition: all 0.7s ease-out;
+}
+
+/* Third Div (with Image and Paragraph) */
+
+.footer-sectionThree {
+  flex: 1;
+  margin: 10px 20px;
+  text-align: center; /* Center align the content */
+}
+
+.footer-sectionThree p {
+  padding-right: 15px;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.footer-sectionThree img {
+  max-width: 100%; /* Ensure image scales down on smaller screens */
+  height: 200px; /* Maintain aspect ratio */
+}
+
+/* Responsive Adjustments */
+li a {
+  text-decoration: none;
+  color: black;
+}
+
+@media (max-width: 991px) {
+  footer{
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+  }
+  .footer-sectionTwo{
+    border: 0;
+    width: 100%;
+  }
+  .footer-sectionFour{
+    border: 0;
+    width: 100%;
+    display: block;
+  }
+  .footer-sectionThree{
+    display: none;
+  }
+  .social {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    align-content: center;
+    margin-bottom: 20px;
+  }
+  .flex-Row{
+    margin-bottom: 10px;
+  }
+}

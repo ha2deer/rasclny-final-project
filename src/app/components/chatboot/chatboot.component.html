@@ -1,0 +1,26 @@
+<div class="chatbot-container" >
+  <!-- أيقونة الشات -->
+  <div class="chat-icon" (click)="toggleDropdown()"*ngIf="!isDropdownVisible">💬</div>
+
+  <!-- نافذة الشات -->
+  <div class="chat-head" *ngIf="isDropdownVisible">
+    <div class="chat-header" >
+      <span>Rasclny</span>
+      <span class="chat-status">متصل</span>
+      <button class="close-btn"(click)="toggleDropdown()" >✖</button>
+    </div>
+    <div class="chat-body">
+      <p class="chat-message">
+        مرحباً! أهلاً بك في رسكلني مصر. اعتبرني دليلك المفضل.
+      </p>
+      <div class="chat-options">
+        <button></button>
+        <button></button>
+        <button></button>
+        <button></button>
+        <button></button>
+        <button></button>
+      </div>
+    </div>
+  </div>
+</div>

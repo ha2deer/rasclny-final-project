@@ -1,0 +1,24 @@
+<div class="p-content">
+    <div class="img-p full-withradius border">
+        <img  [src]="['/assets/'+singleProductData?.image_url]" alt="">
+    </div>
+    
+    <div class="data">
+        <div class="name ">
+            <p class="header header--shadow">
+                {{singleProductData?.product_name}}
+            </p>
+        </div>
+        <div class="description">
+            <p class="disciption">
+                {{singleProductData?.product_description}}
+            </p>
+        </div>
+        <div class="price">
+
+            <p>
+                
+                {{singleProductData?.price_product}} Pound
+            </p>
+        </div>
+    </div>

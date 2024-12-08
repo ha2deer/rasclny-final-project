@@ -1,0 +1,10 @@
+<div *ngFor="let category of data">
+  <app-cat-button
+    class="n"
+    [categoryLink]="category?.category_id"
+    class="buttonss"
+    [color]="'white'"
+    [backGroundColor]="'rgba(89, 160, 83, 1)'"
+    [text]="category?.category_name"
+  ></app-cat-button>
+</div>

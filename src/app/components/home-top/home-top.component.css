@@ -1,0 +1,102 @@
+.homeone {
+  width: 100%;
+  height: 100vh;
+  background-color: white;
+  display: flex;
+  justify-content: space-between; /* Pushes content to left and image to right */
+  align-items: center;
+  padding: 20px; /* Added some padding to give it breathing room */
+}
+
+.home {
+  width: 510px;
+  display: flex;
+  flex-direction: column; /* Aligns h1 and h4 vertically */
+  justify-content: center;
+  text-align: left;
+  padding-left: 50px;
+  margin-right: 150px;
+}
+
+.home-divs {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  height: auto;
+  padding: 70px 0;
+}
+
+.home-header {
+  font-size: 48px;
+  color: #66ad5f;
+  font-family: 'Kanit', sans-serif;
+  line-height: 60px;
+}
+
+.home-head {
+  font-size: 28px;
+  color: #66ad5f;
+  font-family: 'Urbanist', sans-serif;
+  line-height: 30px;
+  margin-top: 10px; /* Adds spacing between h1 and h4 */
+}
+
+.bold-text {
+  font-weight: bold; /* Makes the text bold */
+}
+
+.thin-text {
+  font-weight: 300; /* Adjust this value for the desired thinness */
+}
+
+.home-img {
+  width: 400px; /* Make the image smaller */
+  height: auto;
+  border-radius: 30px;
+  transition: ease-in-out;
+}
+
+.homeone .home-divs img:hover {
+  width: 330px;
+  height: auto;
+  transition: 0.5s;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1125px) {
+  .home {
+    margin-right: 0;
+  }
+}
+@media (max-width: 965px) {
+  .home {
+    width: 100%;
+    text-align: center;
+    padding-left: 0;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .homeone {
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .home-header {
+    font-size: 36px;
+    line-height: 45px;
+  }
+
+  .home-head {
+    font-size: 22px;
+    line-height: 28px;
+  }
+
+  .home-img {
+    width: 300px; /* Make the image smaller on mobile */
+  }
+}

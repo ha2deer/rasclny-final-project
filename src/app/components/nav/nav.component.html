@@ -1,0 +1,76 @@
+<nav class="navbar">
+  <!-- Logo -->
+  <div class="logo-container">
+    <img
+      class="logo"
+      [routerLink]="'/home'"
+      src="../../../assets/rasclny-images/logo.png"
+      alt="Logo"
+    />
+  </div>
+
+  <!-- Search Bar -->
+  <div class="search-box">
+    <button class="btn-search">
+      <img
+        class="search-icon"
+        src="https://img.icons8.com/?size=100&id=XU3XKgdpT0qG&format=png&color=288C36"
+        alt="Search"
+      />
+    </button>
+    <input type="text" class="input-search" placeholder="Type to Search..." />
+  </div>
+
+  <!-- Navigation Links -->
+  <div class="flex-between list">
+    <ul routerLinkActive="active" [className]="categoryClass">
+      <a [routerLink]="'/home'">Home</a>
+    </ul>
+    <ul routerLinkActive="active" [className]="categoryClass">
+      <a [routerLink]="'/category'">Categories</a>
+    </ul>
+    <ul routerLinkActive="active" [className]="categoryClass">
+      <a [routerLink]="'/points'">Points</a>
+    </ul>
+    <ul routerLinkActive="active" [className]="categoryClass">
+      <a [routerLink]="'/about'">About Us</a>
+    </ul>
+  </div>
+
+  <!-- User Actions -->
+  <div class="icons-container">
+    <div class="cart-container">
+      <img 
+        [routerLink]="'/cart'" 
+        src="https://img.icons8.com/?size=100&id=JWjjFaN1ezzm&format=png&color=288C36" 
+        alt="Cart" 
+        class="nav-logo" 
+        style="cursor: pointer;"
+      />
+      <span class="cart-badge">{{ cartCount }}</span>
+    </div>
+    
+
+    <!-- Conditional Profile and Login -->
+    <div *ngIf="isAuth; else loginTemplate" class="profile" (click)="toggleDropdown()">
+      <img
+        src="https://img.freepik.com/premium-vector/user-profile-icon-flat-style-member-avatar-vector-illustration-isolated-background-human-permission-sign-business-concept_157943-15752.jpg"
+        alt="Profile"
+        style="cursor: pointer;"
+      />
+      <div *ngIf="isDropdownVisible" class="dropdown">
+        <ul>
+          <li><a [routerLink]="'/profile'">Profile</a></li>
+          <li (click)="logOut()">Logout</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Login Button -->
+    <ng-template #loginTemplate>
+      <div class="login-container">
+        <button [routerLink]="'/auth'" class="login-btn">Login</button>
+      </div>
+    </ng-template>
+  </div>
+</nav>
