@@ -1,11 +1,7 @@
 <div [routerLink]="['/singleProduct/', CartItem.product.product_name]" class="item">
   <div class="section1">
     <div class="item-image">
-      <img
-      [src]="['/assets/'+ CartItem?.product?.image_url]"  
-        alt="{{ CartItem.product.product_name }}"
-        class="product-image"
-      />
+      <img *ngIf="CartItem?.product?.image_url" [src]="'/assets/' + CartItem.product.image_url" alt="Product Image">
     </div>
     <div class="product-details">
       <div class="txts">

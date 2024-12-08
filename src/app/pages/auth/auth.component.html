@@ -114,7 +114,8 @@
                 <small *ngIf="applyForm.controls['password']?.errors?.['required']">Password is required.</small>
                 <small *ngIf="applyForm.controls['password']?.errors?.['minlength']">Password must be at least 6 characters.</small>
                 <small *ngIf="applyForm.controls['password']?.errors?.['serverError']">
-                  {{ applyForm.controls['password']?.errors?.['serverError'] }}
+                  {{ applyForm.controls['password'].errors?.['serverError'] }}
+
                 </small>
               </div>
             </div>
