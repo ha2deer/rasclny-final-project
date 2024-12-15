@@ -20,8 +20,10 @@
             <div *ngIf="mode === 'signup'" class="mb-3">
               <label for="username" class="form-label">Username</label>
               <input formControlName="username" id="username" type="text" class="form-control" placeholder="Enter your username" />
-              <div *ngIf="applyForm.get('username')?.errors" class="text-danger">
+              <div *ngIf="applyForm.get('username')?.invalid && (applyForm.get('username')?.touched || isFormSubmitted)" class="text-danger">
                 <small *ngIf="applyForm.get('username')?.errors?.['required']">Username is required.</small>
+                <small *ngIf="applyForm.get('username')?.errors?.['minlength']">Username must be at least 3 characters long.</small>
+                <small *ngIf="applyForm.get('username')?.errors?.['pattern']">Username cannot contain spaces.</small>
                 <small *ngIf="applyForm.get('username')?.errors?.['serverError']">{{ applyForm.get('username')?.errors?.['serverError'] }}</small>
               </div>
             </div>
@@ -30,7 +32,7 @@
             <div class="mb-3">
               <label for="email" class="form-label">Email</label>
               <input formControlName="email" id="email" type="email" class="form-control" placeholder="name@email.com" />
-              <div *ngIf="applyForm.get('email')?.errors" class="text-danger">
+              <div *ngIf="applyForm.get('email')?.invalid && (applyForm.get('email')?.touched || isFormSubmitted)" class="text-danger">
                 <small *ngIf="applyForm.get('email')?.errors?.['required']">Email is required.</small>
                 <small *ngIf="applyForm.get('email')?.errors?.['email']">Must be a valid email address.</small>
                 <small *ngIf="applyForm.get('email')?.errors?.['serverError']">{{ applyForm.get('email')?.errors?.['serverError'] }}</small>
@@ -41,7 +43,7 @@
             <div class="mb-3">
               <label for="password" class="form-label">Password</label>
               <input formControlName="password" id="password" type="password" class="form-control" placeholder="Enter your password" />
-              <div *ngIf="applyForm.get('password')?.errors" class="text-danger">
+              <div *ngIf="applyForm.get('password')?.invalid && (applyForm.get('password')?.touched || isFormSubmitted)" class="text-danger">
                 <small *ngIf="applyForm.get('password')?.errors?.['required']">Password is required.</small>
                 <small *ngIf="applyForm.get('password')?.errors?.['minlength']">Password must be at least 6 characters.</small>
               </div>
@@ -51,7 +53,7 @@
             <div *ngIf="mode === 'signup'" class="mb-3">
               <label for="phone" class="form-label">Phone</label>
               <input formControlName="phone" id="phone" type="text" class="form-control" placeholder="Enter your phone number" />
-              <div *ngIf="applyForm.get('phone')?.errors" class="text-danger">
+              <div *ngIf="applyForm.get('phone')?.invalid && (applyForm.get('phone')?.touched || isFormSubmitted)" class="text-danger">
                 <small *ngIf="applyForm.get('phone')?.errors?.['required']">Phone is required.</small>
                 <small *ngIf="applyForm.get('phone')?.errors?.['pattern']">Enter a valid phone number.</small>
               </div>
@@ -65,7 +67,7 @@
                 <option value="male">Male</option>
                 <option value="female">Female</option>
               </select>
-              <div *ngIf="applyForm.get('gender')?.errors" class="text-danger">
+              <div *ngIf="applyForm.get('gender')?.invalid && (applyForm.get('gender')?.touched || isFormSubmitted)" class="text-danger">
                 <small *ngIf="applyForm.get('gender')?.errors?.['required']">Gender is required.</small>
               </div>
             </div>
