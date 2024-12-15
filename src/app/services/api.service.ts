@@ -6,13 +6,13 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ApiService {
-  private readonly BASE_URL = 'https://recycle.kero-dev.tech/api'; // Base URL for the API
+  private readonly BASE_URL = 'https://recycle.kero-dev.tech/api'; 
 
   constructor(private http: HttpClient) {}
 
   /**
-   * Fetches data from the categories endpoint.
-   * @returns {Observable<any>} An observable containing the response data.
+ 
+   * @returns {Observable<any>} 
    */
   getCategories(): Observable<any> {
     const endpoint = `${this.BASE_URL}/categories/index`;

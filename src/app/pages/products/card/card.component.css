@@ -32,8 +32,8 @@
   width: 85%;
   gap: 10px;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  align-items: flex-start;
+  /* justify-content: space-between; */
 }
 
 .category {

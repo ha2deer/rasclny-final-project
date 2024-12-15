@@ -32,19 +32,23 @@ align-items: center;
     background-color: rgba(255, 255, 255, 0.5); 
     z-index: 1;
 }
-.flex .food{
-  background: url('/assets/rasclny-images/pexels-ella-olsson-572949-1640774_1.jpg');
- 
-  background-position: center center !important;
- 
+.front-content{
+  background-image:linear-gradient(rgb(0 0 0 / 54%), rgba(0, 0, 0, 0.622)) ;
+  background-position: center;
+  background-size: cover;
 }
-.flex .plastic{
-  background: url('/assets/rasclny-images/pexels-magda-ehlers-pexels-2547565.jpg'), #E8F5E9 ;  /* مش بتظهر */
-  background-position: center center !important;
+.food{
+  background-image:linear-gradient(rgb(0 0 0 / 54%), rgba(0, 0, 0, 0.622)) , url('src\assets\rasclny-images\foood.jpg');
 }
-.paper{
-  background: url('/assets/rasclny-images/paperr.jpg'), #E8F5E9;
-  background-position: center center; 
+.metall{
+  background-image: linear-gradient(rgb(0 0 0 / 54%), rgba(0, 0, 0, 0.622)) ,url('src\assets\rasclny-images\finalmital.jpg');
+}
+
+.plasticc{
+  background-image: linear-gradient(rgba(0, 0, 0, 0.326), rgba(0, 0, 0, 0.342)) ,url('src\assets\rasclny-images\finalplastic.jpg');
+}
+.paperr{
+  background-image: linear-gradient(rgb(0 0 0 / 54%), rgba(0, 0, 0, 0.622)) ,url('src\assets\rasclny-images\pexels-cup-of-couple-6632867.jpg');
 }
 .metal{
   background: url('/assets/rasclny-images/Metall.jpg'), #E8F5E9;
@@ -52,9 +56,8 @@ align-items: center;
   background-position: center center;
 
 }
-.Glass{
-  background: url('/assets/rasclny-images/tockCake-Chilled Glass Bottle_1728067927.jpg'), #E8F5E9;
-  background-position: center center;
+.glasss{
+  background-image: linear-gradient(rgb(0 0 0 / 54%), rgba(0, 0, 0, 0.622)) ,url('src\assets\rasclny-images\glassss.jpg');
 }
 .card-container {
   width: 300px;

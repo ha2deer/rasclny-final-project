@@ -26,7 +26,7 @@ const routes: Routes = [
   { path: 'auth', component: AuthComponent ,canActivate: [NoAuthGuard]},
   { path: 'auth/:mode', component: AuthComponent,canActivate: [NoAuthGuard]},
   { path: 'product/:productName', component: SinglProductComponent },
-  { path: 'cart', component: RequestComponent },
+  { path: 'cart', component: RequestComponent ,canActivate: [NoAuthGuard] },// مش شغاله
   { path: 'intro', component: IntroComponent},
   {path: 'points', component: PointsComponent},
   {path: 'about' , component:AboutusComponent },

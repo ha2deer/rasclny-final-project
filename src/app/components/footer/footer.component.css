@@ -20,10 +20,15 @@ footer {
   width: 100%;
 }
 
-/* First Div (Categories) */
+.app-button a  .flex-column p{
+  text-decoration: none;
+}
+.app-button a {
+  text-decoration: none;
+}
 .footer-section {
   flex: 1;
-  margin: 10px 10px; /* Reduced margin to bring divs closer */
+  margin: 10px 10px; 
  
   
 }

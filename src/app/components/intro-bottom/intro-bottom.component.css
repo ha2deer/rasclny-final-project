@@ -1,4 +1,4 @@
-.cards-wrapper {
+/* .cards-wrapper {
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
@@ -43,4 +43,50 @@ background-color: aqua;
   font-size: 14px;
   color: #666;
   margin: 0 16px 16px;
+} */
+/* القاعدة الأساسية لتنسيق الكروت */
+/* القاعدة الأساسية لتنسيق الكروت */
+/* جعل الطول ثابتًا */
+.single-card {
+  flex: 1 1 calc(33.333% - 20px); /* العرض */
+  max-width: calc(33.333% - 20px);
+  height: 350px; /* تحديد ارتفاع ثابت */
+  display: flex;
+  flex-direction: column; /* ترتيب المحتوى عموديًا */
+  justify-content: space-between; /* توزيع المحتوى بالتساوي */
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  text-align: center;
+
 }
+
+/* التحكم في النص ليبقى ضمن الطول */
+.card-text {
+  font-size: 0.9rem;
+  color: #555;
+  overflow: hidden; /* إخفاء النص الزائد */
+  text-overflow: ellipsis; /* وضع النقاط عند تجاوز النص */
+  display: -webkit-box; /* جعل النص في صندوق */
+  -webkit-box-orient: vertical; /* الاتجاه عمودي */
+}
+
+/* إعلامات شرطية لتغيير الطول */
+@media screen and (max-width: 992px) {
+  .single-card {
+    flex: 1 1 calc(50% - 20px);
+    max-width: calc(50% - 20px);
+    height: 300px; /* تعديل الطول للشاشات المتوسطة */
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .single-card {
+    flex: 1 1 100%;
+    max-width: 100%;
+    height: 250px; 
+  }
+}
+

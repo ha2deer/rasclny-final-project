@@ -100,7 +100,11 @@
   cursor: pointer;
   padding: 5px;
 }
-
+.price{
+  position: absolute;
+  right: 800px;
+ 
+}
 .remove img {
   height: 20px;
   width: 20px;

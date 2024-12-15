@@ -101,11 +101,25 @@ export class AuthenticationService {
   }
 
   // Update User Profile
-  updateProfile(data: any): Observable<any> {
+  // updateProfile(data: any): Observable<any> {
+  //   const token = this.getToken();
+  //   if (!token) return throwError(() => new Error('Authentication token is missing. Please log in again.'));
+  //   const headers = this.createHeaders(token);
+  //   return this.http.post(`${BACKEND_URL}/profile/update`, data, { headers }).pipe(
+  //     catchError((error) => {
+  //       console.error('Error updating profile:', error);
+  //       return throwError(() => new Error('Failed to update profile. Please try again later.'));
+  //     })
+  //   );
+  // }
+
+  updateProfile(data: any, userId: number): Observable<any> {
     const token = this.getToken();
     if (!token) return throwError(() => new Error('Authentication token is missing. Please log in again.'));
+  
     const headers = this.createHeaders(token);
-    return this.http.post(`${BACKEND_URL}/profile/update`, data, { headers }).pipe(
+  
+    return this.http.post(`${BACKEND_URL}/profile/update/${userId}`, data, { headers }).pipe(
       catchError((error) => {
         console.error('Error updating profile:', error);
         return throwError(() => new Error('Failed to update profile. Please try again later.'));

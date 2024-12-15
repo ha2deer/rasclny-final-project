@@ -6,10 +6,12 @@
         <app-info></app-info>
       </div>
     </div>
-    <div class="txt">
+    <div class="txt flex-column ">
       <p class="name">{{ product?.product_name }}</p>
-      <p class="price">{{ product?.price_product }} $</p><br>
+      <br>
+      <p class="price">{{ product?.price_product }} $</p><br> <br>
       <p class="price">Quantity:{{ product?.point_product }}</p>
+      <p class="price">Quantity Type:{{ product?.QuantityType }}</p>
     </div>
     <app-button
       (click)="onButtonClick($event, product)"
