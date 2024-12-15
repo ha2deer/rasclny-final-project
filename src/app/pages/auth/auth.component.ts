@@ -124,7 +124,7 @@ export class AuthComponent implements OnInit {
       errorMessages.push('Failed to login. Please check your credentials.');
     }
 
-    this.errors = { message: errorMessages.join(' | ') };
+    this.errors = { message: errorMessages.join('<br>') };
   }
 
   isValid(controlName: string): boolean {

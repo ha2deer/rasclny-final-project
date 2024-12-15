@@ -10,9 +10,8 @@
           <h3 class="card-title text-center mb-4">{{ mode === 'signup' ? 'Sign Up' : 'Sign In' }}</h3>
 
           <!-- Global Error Alert -->
-          <div *ngIf="errors?.message" class="alert alert-danger">
-            {{ errors.message }}
-          </div>
+          <div *ngIf="errors?.message" class="alert alert-danger" [innerHTML]="errors.message"></div>
+
 
           <form [formGroup]="applyForm" (ngSubmit)="submitHandler()">
             
