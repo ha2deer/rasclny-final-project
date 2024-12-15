@@ -13,6 +13,7 @@ export class NavComponent implements OnInit {
   isDropdownVisible = false; 
   isCartVisible = false; 
   cartCount: number = 0; 
+  userAvatar: string = 'https://img.freepik.com/premium-vector/user-profile-icon-flat-style-member-avatar-vector-illustration-isolated-background-human-permission-sign-business-concept_157943-15752.jpg';
 
   categoryClass = 'link'; 
   menuOpen: boolean = false; 
@@ -26,6 +27,7 @@ export class NavComponent implements OnInit {
 
   ngOnInit(): void {
     this.checkAuthStatus();
+    this.loadUserAvatar();
 
     this.authService.status().subscribe((isLoggedIn) => {
       this.isAuth = isLoggedIn; 
@@ -34,9 +36,11 @@ export class NavComponent implements OnInit {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.checkAuthStatus(); 
+        this.loadUserAvatar();
         this.updateCategoryClass(event.url);
       }
     });
+  
 
     // Get the initial cart count
     this.cartCount = this.cartService.getCartCount();
@@ -54,6 +58,16 @@ export class NavComponent implements OnInit {
   private checkAuthStatus(): void {
     const user = localStorage.getItem('user');
     this.isAuth = !!user; 
+  }
+
+  private loadUserAvatar(): void {
+    const user = localStorage.getItem('user');
+    if (user) {
+      const userData = JSON.parse(user);
+      if (userData?.avatar) {
+        this.userAvatar = userData.avatar;
+      }
+    }
   }
 
   toggleDropdown(): void {

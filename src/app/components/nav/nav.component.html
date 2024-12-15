@@ -54,11 +54,13 @@
 
     <!-- Conditional Profile and Login -->
     <div *ngIf="isAuth; else loginTemplate" class="profile" (click)="toggleDropdown()">
-      <img
-        src="https://img.freepik.com/premium-vector/user-profile-icon-flat-style-member-avatar-vector-illustration-isolated-background-human-permission-sign-business-concept_157943-15752.jpg"
-        alt="Profile"
-        style="cursor: pointer;"
-      />
+    
+      <img 
+  [src]="userAvatar" 
+  alt="Profile" 
+  style="cursor: pointer;" 
+/>
+
       <div *ngIf="isDropdownVisible" class="dropdown">
         <ul>
           <li><a [routerLink]="'/profile'">Profile</a></li>
