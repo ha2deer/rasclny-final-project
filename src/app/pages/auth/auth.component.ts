@@ -44,11 +44,11 @@ export class AuthComponent implements OnInit {
       ]),
     });
 
-    // Add additional controls if in signup mode
     if (this.mode === 'signup') {
       this.applyForm.addControl('username', new FormControl('', [
         Validators.required,
         Validators.minLength(3),
+        Validators.pattern(/^[^\s]+$/) // Ensures no spaces in username
       ]));
       this.applyForm.addControl('phone', new FormControl('', [
         Validators.required,
@@ -102,30 +102,29 @@ export class AuthComponent implements OnInit {
     });
   }
 
-  /**
-   * Handles different types of errors returned from the backend.
-   * It displays global errors and field-specific errors.
-   */
   private handleError(err: any): void {
-    // ✅ Handle Global Errors (like "Invalid email or password.")
+    let errorMessages: string[] = [];
+
     if (err?.error?.error) {
-      this.errors = { message: err.error.error };
-      return;
+      errorMessages.push(err.error.error);
     } 
 
-    // ✅ Handle Field-Specific Errors (like email, username, etc.)
     if (err?.error) {
       Object.keys(err.error).forEach((key) => {
         const control = this.applyForm.get(key);
         if (control) {
-          control.setErrors({ serverError: err.error[key] });
+          const serverErrors = Array.isArray(err.error[key]) ? err.error[key].join(', ') : err.error[key];
+          control.setErrors({ serverError: serverErrors });
+          errorMessages.push(`${key}: ${serverErrors}`);
         }
       });
-      return;
     } 
 
-    // ✅ Fallback to a generic message for unknown errors
-    this.errors = { message: 'Failed to login. Please check your credentials.' };
+    if (errorMessages.length === 0) {
+      errorMessages.push('Failed to login. Please check your credentials.');
+    }
+
+    this.errors = { message: errorMessages.join(' | ') };
   }
 
   isValid(controlName: string): boolean {
@@ -135,10 +134,10 @@ export class AuthComponent implements OnInit {
   }
 
   navigateTo(mode: 'login' | 'signup'): void {
-    this.router.navigate([`/auth/${mode}`]);
     this.mode = mode;
     this.applyForm.reset();
     this.isFormSubmitted = false;
     this.initializeForm();
+    this.router.navigate([`/auth/${mode}`]);
   }
 }

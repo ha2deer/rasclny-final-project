@@ -1,5 +1,5 @@
 <div [routerLink]="['/singleProduct/', CartItem.product.product_name]" class="item">
-  <p class="price">{{ CartItem.product.QuantityType }}</p>
+  <p class="price">Per {{ CartItem.product.QuantityType | slice:0:1 | uppercase }}{{ CartItem.product.QuantityType | slice:1 }}</p>
   <div class="section1">
     <div class="item-image">
       <img *ngIf="CartItem?.product?.image_url" [src]="'/assets/' + CartItem.product.image_url" alt="Product Image">

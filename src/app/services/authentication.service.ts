@@ -151,7 +151,11 @@ export class AuthenticationService {
     // Make the HTTP POST request with headers
     return this.http.post(`${BACKEND_URL}/auth/register`, data, { headers }).pipe(
       catchError((error) => {
-        console.error('Registration error:', error);
+        if (error?.error) {
+          console.error('Registration error:', error.error);
+          return throwError(() => error.error);
+        }
+        console.error('Unexpected registration error:', error);
         return throwError(() => new Error('Failed to register. Please try again.'));
       })
     );
