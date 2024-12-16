@@ -1,8 +1,29 @@
-<div class="content">
-    <app-product-nav class="buttonss"></app-product-nav>
-    <div class="cards">
-      <app-card
-        class="CARDSS"
-       
-      ></app-card>
+<div *ngIf="loading" class="loading-indicator" style="margin-top: 500px">
+  Loading products...
+</div>
+
+<div *ngIf="!loading && products.length === 0" class="no-products" style="margin-top: 500px">
+  No products available.
+</div>
+
+<div *ngFor="let product of products" class="product-card" style="margin: 150px;">
+  <div class="card">
+    <div class="ii">
+      <img [src]="product?.image_url" class="card-img" alt="{{ product?.name }}" />
+      <div class="info-i">
+        <app-info></app-info>
+      </div>
     </div>
+    <div class="txt">
+      <p class="name">{{ product?.name }}</p>
+      <p class="price">Points: {{ product?.point }} </p>
+      <br />
+    </div>
+    <app-button
+      (click)="onRequestProduct($event, product)"
+      [color]="'white'"
+      [backGroundColor]="'rgba(89, 160, 83, 1)'"
+      [text]="'Request'"
+    ></app-button>
+  </div>
+</div>

@@ -55,3 +55,30 @@ section
     margin-top: 60px;
    }
   }
+  .point-image img {
+    max-width: 100%; /* الصورة لا تتجاوز عرض الحاوية */
+    height: auto; /* الحفاظ على الأبعاد الطبيعية للصورة */
+    object-fit: contain; /* عدم تمدد الصورة */
+    display: block;
+    margin: 0 auto; /* توسيط الصورة */
+}
+
+/* لضبط التباعد عند الشاشات الصغيرة */
+@media (max-width: 430px) {
+    .point-image img {
+        max-width: 70%; /* تقليل عرض الصورة إلى 70% */
+        margin-top: 20px; /* إضافة تباعد علوي */
+    }
+
+    .section {
+        margin-top: 50px !important; /* تقليل التباعد العلوي */
+    }
+
+    .part1 {
+        margin-top: 30px;
+    }
+
+    .part2 {
+        margin-bottom: 30px; /* تباعد سفلي إضافي للقسم */
+    }
+}
