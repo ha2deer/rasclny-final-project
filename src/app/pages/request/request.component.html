@@ -1,25 +1,28 @@
 <div class="container">
-  <div class=" Request-container">
+  <div class="Request-container">
+
+    <!-- Cart Section -->
     <div class="cartProducts">
       <h2>Shopping Cart</h2>
-    <div class="cardd">
-      <div  *ngFor="let CartItem of CartItems">
-        
-        <app-left-request class="cart-item" [CartItem]="CartItem">
-    
-        </app-left-request>
+
+      <div *ngIf="CartItems.length > 0; else emptyCart" class="cardd">
+        <div *ngFor="let CartItem of CartItems">
+          <app-left-request class="cart-item" [CartItem]="CartItem"></app-left-request>
+        </div>
       </div>
+
+      <ng-template #emptyCart>
+        <p style="text-align: center; color: gray;">Your cart is empty.</p>
+      </ng-template>
     </div>
-    
+
+    <!-- Checkout Form -->
+    <div class="formContainer">
+      <app-right-request
+        [CartItems]="CartItems"
+        [cartEmpty]="CartItems.length === 0">
+      </app-right-request>
     </div>
-      <div class="formContainer">
-        <app-right-request ></app-right-request>
-      </div>
-    
-    </div>
-    
-    
+
+  </div>
 </div>
-
-
-

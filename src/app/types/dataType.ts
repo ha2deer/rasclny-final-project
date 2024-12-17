@@ -16,22 +16,23 @@ product_name: string,
   point: number;             // Point value
   image_url: string | null;  // Image URL
 }
- 
+
  export interface CartItem {
    product: products;      // The product details
    product_type?: string; // Add product_type as an optional property\
    totalAmount: number;    // Quantity of this product in the cart
    subtotal?: number;      // Optional: totalAmount * product.price
+   points?: number;  // Optional property
+   price?: number;   // Optional property
  }
- 
+
  export interface productData {
-   products: products[];  
-   name: string; 
+   products: products[];
+   name: string;
    product_type?: string; // Add product_type as an optional property
-   url: string;           
-   category: string;      
-   price?: string;        
-   page?: number;         
-   totalPages?: number;   
+   url: string;
+   category: string;
+   price?: string;
+   page?: number;
+   totalPages?: number;
  }
- 

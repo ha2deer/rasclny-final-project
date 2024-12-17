@@ -8,15 +8,20 @@
       <div class="txts">
         <h2>{{ CartItem.product.product_name }}</h2>
         <div style="display: flex; width: fit-content">
-          <p style="margin-right: 5px">Price: ${{ CartItem.product.price_product }}</p>
-          <p>
+
+          <!-- Show price and total price only if the product type is not "points" -->
+          <p *ngIf="CartItem.product.product_type !== 'points'" style="margin-right: 5px">
+            Price: ${{ CartItem.product.price_product }}
+          </p>
+          <p *ngIf="CartItem.product.product_type !== 'points'">
             Total Price: ${{ CartItem.product.price_product * CartItem.totalAmount }}
           </p>
-          
+
+          <!-- Always show total points, even for points products -->
           <p>
-            Total point {{ CartItem.product.point_product * CartItem.totalAmount }}
+            Total points: {{ CartItem.product.point_product * CartItem.totalAmount }}
           </p>
-          
+
         </div>
       </div>
       <div class="counter">
@@ -24,7 +29,7 @@
           class="btn minus" style="color: white;"
           (click)="decreaseItem($event, CartItem.product)"
         >
-        -
+          -
         </button>
         <span class="count">{{ CartItem.totalAmount }}</span>
         <button

@@ -18,7 +18,7 @@ export class LeftRequestComponent {
 
   increaseItem(event: MouseEvent, product: products) {
     event.stopPropagation();
-  
+
     this.cart.increaseItem(product);
   }
 
@@ -26,7 +26,7 @@ export class LeftRequestComponent {
     event.stopPropagation();
     this.cart.decreaseItem(product);
   }
- 
-  
-  
+
+
+
 }

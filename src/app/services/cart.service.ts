@@ -23,25 +23,57 @@ export class CartService {
    * @param {products} product - The product object
    * @param {string} product_type - The type of the product
    */
+  // public addToCart(product: products, product_type: string): void {
+  //   const currentCart = this._state.getValue();
+  //   const updatedCart = new Map(currentCart);
+  //   const productKey = product.product_id.toString();
+  //   const item = updatedCart.get(productKey); // Use product_id as a string key
+  //
+  //   if (item) {
+  //     updatedCart.set(productKey, {
+  //       product,
+  //       totalAmount: item.totalAmount + 1,
+  //       product_type: product_type // Update the product type
+  //     });
+  //   } else {
+  //     updatedCart.set(productKey, {
+  //       product,
+  //       totalAmount: 1,
+  //       product_type: product_type // Set the product type for new item
+  //     });
+  //   }
+  //
+  //   this.updateLocalStorageAndState(updatedCart);
+  // }
   public addToCart(product: products, product_type: string): void {
     const currentCart = this._state.getValue();
     const updatedCart = new Map(currentCart);
     const productKey = product.product_id.toString();
     const item = updatedCart.get(productKey); // Use product_id as a string key
 
-    if (item) {
-      updatedCart.set(productKey, {
+    let totalAmount = 1;
+    let updatedProduct: CartItem = { product, totalAmount, product_type };
+
+    // Check the product type
+    if (product_type === 'category') {
+      updatedProduct = {
         product,
-        totalAmount: item.totalAmount + 1,
-        product_type: product_type // Update the product type
-      });
-    } else {
-      updatedCart.set(productKey, { 
-        product, 
-        totalAmount: 1, 
-        product_type: product_type // Set the product type for new item 
-      });
+        totalAmount: item ? item.totalAmount + 1 : 1,
+        product_type,
+        points: (item?.points ?? 0) + product.point_product, // Fallback to 0 if item.points is undefined
+        price: (item?.price ?? 0) + product.price_product // Fallback to 0 if item.price is undefined
+      };
+    } else if (product_type === 'points') {
+      updatedProduct = {
+        product,
+        totalAmount: item ? item.totalAmount + 1 : 1,
+        product_type,
+        points: (item?.points ?? 0) - product.point_product, // Subtract points for points products
+        price: 0 // Points products don't have a price
+      };
     }
+    console.log(updatedProduct)
+    updatedCart.set(productKey, updatedProduct);
 
     this.updateLocalStorageAndState(updatedCart);
   }
