@@ -16,22 +16,34 @@
   </form>
 </div>
 
+<!-- Display total prices and points -->
+<div class="totals">
+  <p style="color: #008000; font-weight: bold">Total Price: ${{ totalPrice.toFixed(2) }}</p>
+  <br>
+  <p style="color: #008000; font-weight: bold">Total Points: {{ totalPoints }}</p>
+  <br><br>
+</div>
+
 <div class="delivery">
   <p>Delivery</p>
-  <span
-    >Delivery Date:
+  <span>
+    Delivery Date:
     {{ date.toLocaleString('en-US', {
     day: 'numeric',
     month: 'short',
     year: 'numeric',
-  }) }}</span
-  >
+  }) }}
+  </span>
 </div>
+
 <p *ngIf="error !== ''" style="margin-top: 7px; text-align: center; color: red">
   {{ error }}
 </p>
-<div class="ways ">
+
+<div class="ways">
   <button class="subm" (click)="paymentSubmitHandler()">Confirm Request</button>
-  
 </div>
-<a  [routerLink]="'/category'" ><button class="wayss">Back to shopping</button></a>
+
+<a [routerLink]="'/category'">
+  <button class="wayss">Back to shopping</button>
+</a>
