@@ -1,0 +1,118 @@
+span {
+  color: #e90f0f;
+}
+.form-control {
+  margin-bottom: 20px;
+}
+form {
+  display: flex;
+  flex-direction: column;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100dvh;
+  background: #fff;
+  flex-basis: auto;
+  margin-top: 100px !important;
+  
+}
+button{
+  background-color: #66ad5f !important;
+  border: none;
+  transition: all 0.3s ease-in-out;
+}
+button:hover {
+  background-color: #559a50 !important; /* لون أغمق مع الـ hover */
+  transform: scale(1.02); /* تكبير بسيط */
+}
+.img {
+  width: 50%;
+  height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* img {
+  width: 100%;
+  margin-right: 170px;
+} */
+
+.form
+  {
+    width: 50%;
+  height: 100dvh;
+  background: #66ad5f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+form {
+  min-height: 64%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  padding-bottom: 35px;
+  justify-content: center;
+  position: relative;
+}
+app-button{
+  margin-top: 20px;
+}
+.form-container {
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  margin: auto;
+}
+.navigation {
+  position: absolute;
+  bottom: 10px;
+}
+.text-danger small {
+  color: #ff4d4d !important; /* لون أحمر ناعم */
+  font-weight: bold; /* خط عريض */
+}
+.btn-success {
+  background-color: #66ad5f;
+  border: none;
+  transition: all 0.3s ease-in-out;
+}
+.btn-success:hover {
+  background-color: #559a50;
+  transform: scale(1.02);
+}
+.text-success {
+  color: #66ad5f !important;
+}
+.text-success:hover {
+  text-decoration: underline;
+  color: #559a50 !important;
+}
+img {
+  max-height: 400px;
+  width: auto;
+}
+@media only screen and (max-width: 920px) {
+  .img {
+    display: none;
+  }
+  .form {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  form {
+    width: 70%;
+  }
+  .form-control {
+    width: 90%;
+  }
+}

@@ -1,0 +1,111 @@
+/* .cards {
+  gap: 10px;
+}
+.content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 100px 0;
+  flex-direction: column;
+  gap: 50px;
+}
+.CARDSS {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+}
+.buttonss {
+  display: flex;
+  gap: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+} */
+.content {
+  width: 60vw;
+  }
+  .cards{
+    
+      gap: 10px;
+    }
+    .content{
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 100px;
+      flex-direction: column;
+      gap: 50px;
+      width:80%;
+      overflow: scroll;
+    }
+    .CARDSS{
+     display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-evenly;
+      width: 100%;
+    }
+    .buttonss{
+      display: flex;
+    gap: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    }
+    .card {
+      width: 380px;
+      height: 450px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      justify-content: space-around;
+      border-style: solid;
+      border-color: rgba(166, 166, 166, 1);
+      align-items: center;
+      margin-bottom: 100px;
+      border-radius: 20px;
+      border-width: 1px;
+      gap: 10px;
+   
+  
+    }
+    
+    .card-img {
+      width: 300px; 
+      height: 230px; 
+      object-fit: cover; 
+      border-radius: 16px;
+      position:relative;
+    }
+    
+    .name {
+      color: rgba(0, 0, 0, 1);
+      font-size: 20px;
+    }
+    
+    .txt {
+      width: 85%;
+      gap: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    
+    .category {
+      color: rgba(0, 0, 0, 0.63);
+      font-size: 18px;
+    }
+    
+    .price {
+      color: rgba(0, 113, 45, 1);
+      font-size: 18px;
+    }
+    .info-i{
+    position:absolute;
+      right:0;
+      top: 0;
+    }
+    .ii{
+      position: relative;
+    }

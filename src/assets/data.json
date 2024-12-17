@@ -1,0 +1,15 @@
+{
+ 
+ 
+  "products": [
+    {  "name": "productName", "url": "./rasclny images/download (6).jpeg" ,"category":"productCategory","price":"200"},
+    {  "name": "productName", "url": "https://www.echollywell.co.uk/wp-content/uploads/blank-00cc00_040004000.png" ,"category":"productCategory","price":"200"},
+    {  "name": "productName", "url": "https://www.echollywell.co.uk/wp-content/uploads/blank-00cc00_040004000.png" ,"category":"productCategory","price":"200"},
+    {  "name": "productName", "url": "https://www.echollywell.co.uk/wp-content/uploads/blank-00cc00_040004000.png" ,"category":"productCategory2","price":"5000"},
+    {  "name": "productName", "url": "https://www.echollywell.co.uk/wp-content/uploads/blank-00cc00_040004000.png" ,"category":"productCategory2","price":"5000"},
+    {  "name": "productName", "url": "https://www.echollywell.co.uk/wp-content/uploads/blank-00cc00_040004000.png" ,"category":"productCategory2","price":"5000"},
+    {  "name": "productName", "url": "https://www.echollywell.co.uk/wp-content/uploads/blank-00cc00_040004000.png" ,"category":"productCategory2","price":"5000"},
+    {  "name": "productName", "url": "https://www.echollywell.co.uk/wp-content/uploads/blank-00cc00_040004000.png" ,"category":"productCategory2","price":"5000"}
+
+  ]
+}

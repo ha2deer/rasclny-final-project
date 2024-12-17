@@ -1,0 +1,76 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Team</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- يمكنك إضافة Bootstrap إذا أردت -->
+
+  <!-- <div class="container text-center mt-4">
+    
+    <a href="#" class="btn btn-outline-primary mb-4">← Back</a>
+
+   
+    <h2>Our Team</h2>
+    <img src="team-image.png" alt="Team Image" class="team-img">
+
+ 
+    <div class="row mt-5">
+   
+      <div class="col-md-4">
+        <div class="card text-center shadow">
+          <img src="member1.jpg" alt="Team Member 1" class="card-img-top rounded-circle mx-auto mt-3" style="width: 120px; height: 120px; object-fit: cover;">
+          <div class="card-body">
+            <h5 class="card-title">Habiba Waleed</h5>
+            <p>⭐⭐⭐⭐⭐</p>
+            <p class="card-text">Team Leader</p>
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="col-md-4">
+        <div class="card text-center shadow">
+          <img src="member2.jpg" alt="Team Member 2" class="card-img-top rounded-circle mx-auto mt-3" style="width: 120px; height: 120px; object-fit: cover;">
+          <div class="card-body">
+            <h5 class="card-title">Arwa Salah</h5>
+            <p>⭐⭐⭐⭐⭐</p>
+            <p class="card-text">Project Management</p>
+          </div>
+        </div>
+      </div>
+
+   
+      <div class="col-md-4">
+        <div class="card text-center shadow">
+          <img src="member3.jpg" alt="Team Member 3" class="card-img-top rounded-circle mx-auto mt-3" style="width: 120px; height: 120px; object-fit: cover;">
+          <div class="card-body">
+            <h5 class="card-title">Noran Magdy</h5>
+            <p>⭐⭐⭐⭐⭐</p>
+            <p class="card-text">Project Management</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+  <div class="team-section py-5">
+    <div class="container">
+      <h2 class="text-center mt-5 dif-text">Our Team</h2>
+      <div class="text-center mb-5">
+        <img src="assets\rasclny-images\Teamwork-amico.png" alt="Team Illustration" class="img-fluid" style="max-width: 300px;">
+      </div>
+      <div class="row g-4">
+        <div class="col-md-4" *ngFor="let member of teamMembers">
+          <div class="team-card p-4 shadow-sm text-center">
+            <img [src]="member.image" alt="{{ member.name }}" class="rounded-circle mb-3" style="width: 150px; height: 150px;">
+            <h4>{{ member.name }}</h4>
+            <p>{{ member.role }}</p>
+            <p>⭐⭐⭐⭐⭐</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

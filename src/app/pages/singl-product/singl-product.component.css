@@ -1,0 +1,159 @@
+.p-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 60px;
+    flex-wrap: wrap;
+    margin-top: 50px;
+}
+
+.img-p {
+    width: 50%;
+    margin: 50px;
+    padding: 0;
+}
+
+.img-p img {
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.data {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 30px;
+    flex-direction: column;
+    width: 30%;
+}
+
+.name {
+    font-size: 40px;
+    font-weight: 500;
+    text-align: left;
+    width: 100%;
+}
+
+.description {
+    text-align: left;
+    font-size: 24px;
+    width: 100%;
+}
+
+.price {
+    text-align: left;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    color: rgba(0, 113, 45, 1);
+}
+
+/* Responsive styles for screens 700px and below */
+@media (max-width: 700px) {
+    .p-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .data {
+        width: 85%;
+    }
+
+    .img-p {
+        width: 90%;
+    }
+
+    .img-p img {
+        width: 100%;
+    }
+}
+
+/* Specific styles for mobile screens below 480px */
+@media (max-width: 480px) {
+    .p-content {
+        padding: 20px; /* Reduce padding for small screens */
+    }
+
+    .img-p {
+        width: 100%; /* Full width image on mobile */
+        margin: 0;
+    }
+
+    .img-p img {
+        height: auto; /* Keep image height proportional */
+        border-radius: 8px;
+    }
+
+    .data {
+        width: 100%; /* Full width for product details */
+        padding: 10px;
+        gap: 15px; /* Reduced gap for small screens */
+        align-items: flex-start; /* Align text to the left */
+    }
+
+    .name {
+        font-size: 24px; /* Smaller font for mobile */
+        text-align: center; /* Center-align the name */
+    }
+
+    .description {
+        font-size: 16px; /* Smaller description text */
+        text-align: center; /* Center the description */
+    }
+
+    .price {
+        font-size: 18px; /* Smaller price text */
+        justify-content: center;
+        text-align: center;
+    }
+
+    .header {
+        font-size: 2.5rem; /* Adjust header size */
+    }
+}
+
+.border {
+    font-size: 1.6rem;
+    display: grid;
+    place-items: center;
+    min-height: 200px;
+    border: 8px solid;
+    padding: 1rem;
+}
+
+.full-withradius {
+    position: relative;
+    background: #fff;
+    background-clip: padding-box;
+    border: solid 8px transparent;
+    border-radius: 0.8rem;
+}
+
+.full-withradius:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    margin: -8px;
+    border-radius: inherit;
+    background: linear-gradient(to left, turquoise, greenyellow);
+}
+
+.header {
+    color: black;
+    font-family: impact;
+    font-size: 3.5rem;
+    line-height: 1;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}

@@ -1,0 +1,25 @@
+<div class="container">
+  <div class=" Request-container">
+    <div class="cartProducts">
+      <h2>Shopping Cart</h2>
+    <div class="cardd">
+      <div  *ngFor="let CartItem of CartItems">
+        
+        <app-left-request class="cart-item" [CartItem]="CartItem">
+    
+        </app-left-request>
+      </div>
+    </div>
+    
+    </div>
+      <div class="formContainer">
+        <app-right-request ></app-right-request>
+      </div>
+    
+    </div>
+    
+    
+</div>
+
+
+

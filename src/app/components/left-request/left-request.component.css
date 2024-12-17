@@ -1,0 +1,150 @@
+.item {
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  min-height: 120px; /* Ensures consistent item height */
+}
+
+.section1 {
+  display: flex;
+  align-items: center;
+  flex-grow: 1; /* Allow it to grow */
+}
+
+.item-image {
+  height: 80px;
+  width: 80px; /* Set fixed width and height */
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.item-image img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.product-details {
+  margin-left: 10px;
+  display: flex;
+  /* flex-direction: column; */
+  width: 38%;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.txts {
+  display: flex;
+  flex-direction: column;
+}
+
+.txts h2 {
+  margin: 0;
+  color: #000;
+  font-size: 16px; /* Adjusted for mobile */
+  font-weight: bold;
+}
+
+.txts p {
+  margin: 5px 0;
+  color: #008000;
+  font-size: 14px;
+}
+
+.counter {
+  display: flex;
+  align-items: center;
+  background-color: #f1f1f1;
+  padding: 5px;
+  border-radius: 10px;
+  width: fit-content;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.btn {
+  background-color: #3cb371;
+  border: none;
+  color: white;
+  padding: 8px;
+  border-radius: 50%;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  margin: 0 5px; /* Reduced margin for space management */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+  background-color: #2e8b57;
+  transform: scale(1.1);
+}
+
+.count {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  margin: 0 10px; /* Spacing between buttons */
+}
+
+.remove {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+}
+.price{
+  position: absolute;
+  right: 700px;
+ 
+}
+.remove img {
+  height: 20px;
+  width: 20px;
+}
+
+@media (max-width: 375px) {
+  .item-image {
+    height: 60px;
+    width: 60px; /* Smaller image for mobile */
+  }
+
+  .txts h2 {
+    font-size: 14px; /* Adjusted for mobile */
+    width: 110px; /* Ensure text doesn't overflow */
+  }
+
+  .txts p {
+    font-size: 12px;
+  }
+
+  .btn {
+    width: 30px;
+    height: 30px;
+  }
+
+  .count {
+    font-size: 14px;
+  }
+
+  .remove img {
+    height: 15px;
+    width: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .txts h2 {
+    white-space: nowrap; /* Prevent the text from wrapping */
+    overflow: hidden; /* Hide the overflowing text */
+    text-overflow: ellipsis; /* Add "..." to indicate there's more text */
+    max-width: 150px; /* Adjust the max width to fit within mobile screen */
+  }
+}

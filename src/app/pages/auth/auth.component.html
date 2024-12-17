@@ -1,0 +1,95 @@
+<div class="container mt-5 mb-5">
+  <div class="row align-items-center">
+    <div class="col-lg-6 d-none d-lg-block text-center">
+      <img src="assets/auth.png" alt="Authentication Image" class="img-fluid" style="max-height: 400px;" />
+    </div>
+
+    <div class="col-lg-6">
+      <div class="card shadow border-0">
+        <div class="card-body">
+          <h3 class="card-title text-center mb-4">{{ mode === 'signup' ? 'Sign Up' : 'Sign In' }}</h3>
+
+          <!-- Global Error Alert -->
+          <div *ngIf="errors?.message" class="alert alert-danger" [innerHTML]="errors.message"></div>
+
+
+          <form [formGroup]="applyForm" (ngSubmit)="submitHandler()">
+            
+            <!-- Username Field -->
+            <div *ngIf="mode === 'signup'" class="mb-3">
+              <label for="username" class="form-label">Username</label>
+              <input formControlName="username" id="username" type="text" class="form-control" placeholder="Enter your username" />
+              <div *ngIf="applyForm.get('username')?.invalid && (applyForm.get('username')?.touched || isFormSubmitted)" class="text-danger">
+                <small *ngIf="applyForm.get('username')?.errors?.['required']">Username is required.</small>
+                <small *ngIf="applyForm.get('username')?.errors?.['minlength']">Username must be at least 3 characters long.</small>
+                <small *ngIf="applyForm.get('username')?.errors?.['pattern']">Username cannot contain spaces.</small>
+                <small *ngIf="applyForm.get('username')?.errors?.['serverError']">{{ applyForm.get('username')?.errors?.['serverError'] }}</small>
+              </div>
+            </div>
+
+            <!-- Email Field -->
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input formControlName="email" id="email" type="email" class="form-control" placeholder="name@email.com" />
+              <div *ngIf="applyForm.get('email')?.invalid && (applyForm.get('email')?.touched || isFormSubmitted)" class="text-danger">
+                <small *ngIf="applyForm.get('email')?.errors?.['required']">Email is required.</small>
+                <small *ngIf="applyForm.get('email')?.errors?.['email']">Must be a valid email address.</small>
+                <small *ngIf="applyForm.get('email')?.errors?.['serverError']">{{ applyForm.get('email')?.errors?.['serverError'] }}</small>
+              </div>
+            </div>
+
+            <!-- Password Field -->
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input formControlName="password" id="password" type="password" class="form-control" placeholder="Enter your password" />
+              <div *ngIf="applyForm.get('password')?.invalid && (applyForm.get('password')?.touched || isFormSubmitted)" class="text-danger">
+                <small *ngIf="applyForm.get('password')?.errors?.['required']">Password is required.</small>
+                <small *ngIf="applyForm.get('password')?.errors?.['minlength']">Password must be at least 6 characters.</small>
+              </div>
+            </div>
+
+            <!-- Phone Field (Only in Signup) -->
+            <div *ngIf="mode === 'signup'" class="mb-3">
+              <label for="phone" class="form-label">Phone</label>
+              <input formControlName="phone" id="phone" type="text" class="form-control" placeholder="Enter your phone number" />
+              <div *ngIf="applyForm.get('phone')?.invalid && (applyForm.get('phone')?.touched || isFormSubmitted)" class="text-danger">
+                <small *ngIf="applyForm.get('phone')?.errors?.['required']">Phone is required.</small>
+                <small *ngIf="applyForm.get('phone')?.errors?.['pattern']">Enter a valid phone number.</small>
+              </div>
+            </div>
+
+            <!-- Gender Field (Only in Signup) -->
+            <div *ngIf="mode === 'signup'" class="mb-3">
+              <label for="gender" class="form-label">Gender</label>
+              <select formControlName="gender" id="gender" class="form-control">
+                <option value="" disabled selected>Select your gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
+              <div *ngIf="applyForm.get('gender')?.invalid && (applyForm.get('gender')?.touched || isFormSubmitted)" class="text-danger">
+                <small *ngIf="applyForm.get('gender')?.errors?.['required']">Gender is required.</small>
+              </div>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-success w-100" [disabled]="disabled">
+              {{ mode === 'signup' ? 'Sign Up' : 'Sign In' }}
+            </button>
+          </form>
+
+          <!-- Toggle Login/Signup Links -->
+          <div class="mt-3 text-center">
+            <span *ngIf="mode === 'signup'">
+              Already have an account? 
+              <a (click)="navigateTo('login')" class="text-primary" style="cursor: pointer;">Sign In</a>
+            </span>
+            <span *ngIf="mode === 'login'">
+              Don't have an account? 
+              <a (click)="navigateTo('signup')" class="text-primary" style="cursor: pointer;">Sign Up</a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<div class="content">
+  <!-- Navigation Bar -->
+  <app-nav 
+    class="navv" 
+    *ngIf=" !currentRoute.startsWith('/intro')">
+  </app-nav>
+
+  <!-- Router Outlet -->
+  <router-outlet></router-outlet>
+
+  <!-- Chatbot -->
+  <app-chatboot></app-chatboot>
+
+
+  <app-footer 
+    *ngIf="!currentRoute.startsWith('/intro') && !currentRoute.startsWith('/auth') ">
+  </app-footer>
+</div>
