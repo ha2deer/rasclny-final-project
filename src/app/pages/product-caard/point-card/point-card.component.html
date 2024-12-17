@@ -1,7 +1,7 @@
 <div *ngFor="let product of singleCategory"  >
     <div [routerLink]="['/product/', product?.product_name]" class="card">
       <div class="ii">
-        <img [src]="['/assets/'+product?.image_url]" class="card-img" alt="{{ product?.product_name }}" />
+        <img [src]="['/assets/' + product?.image_url]" class="card-img" alt="{{ product?.product_name }}" />
         <div class="info-i">
           <app-info></app-info>
         </div>

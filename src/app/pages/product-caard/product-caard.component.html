@@ -5,11 +5,11 @@
 <div *ngIf="!loading && products.length === 0" class="no-products" style="margin-top: 500px">
   No products available.
 </div>
-
-<div *ngFor="let product of products" class="product-card" style="margin: 150px;">
+<div class="contaner"><div *ngFor="let product of products" class="product-card" style="margin: 150px;">
   <div class="card">
     <div class="ii">
-      <img [src]="product?.image_url" class="card-img" alt="{{ product?.name }}" />
+
+      <img [src]="['/assets/'+product?.image_url]" class="card-img" alt="{{ product.name }}" />
       <div class="info-i">
         <app-info></app-info>
       </div>
@@ -26,4 +26,5 @@
       [text]="'Request'"
     ></app-button>
   </div>
+</div>
 </div>

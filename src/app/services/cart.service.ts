@@ -26,7 +26,6 @@ export class CartService {
   public addToCart(product: products, product_type: string): void {
     const currentCart = this._state.getValue();
     const updatedCart = new Map(currentCart);
-
     const productKey = product.product_id.toString();
     const item = updatedCart.get(productKey); // Use product_id as a string key
 
