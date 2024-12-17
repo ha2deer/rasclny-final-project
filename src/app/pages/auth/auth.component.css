@@ -1,12 +1,36 @@
 span {
-  color: #e90f0f;
+  color: #171616;
+  font-size: 1rem;
+}
+a{
+  text-decoration: none;
+  color:#559a50;
+}
+a:hover{
+  color:blue;
 }
 .form-control {
   margin-bottom: 20px;
 }
 form {
+  min-height: 64%;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  padding-bottom: 35px;
+  justify-content: center;
+  position: relative;
+}
+.form {
+  width: 50%;
+  height: 150vh;
+  background: #66ad5f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .container {
   display: flex;
@@ -24,11 +48,11 @@ button{
   transition: all 0.3s ease-in-out;
 }
 button:hover {
-  background-color: #559a50 !important; /* لون أغمق مع الـ hover */
-  transform: scale(1.02); /* تكبير بسيط */
+  background-color: #559a50 !important;
+  transform: scale(1.02);
 }
 .img {
-  width: 50%;
+  width: 70%;
   height: 100dvh;
   display: flex;
   justify-content: center;
@@ -39,7 +63,7 @@ button:hover {
   margin-right: 170px;
 } */
 
-.form
+/* .form
   {
     width: 50%;
   height: 100dvh;
@@ -47,8 +71,8 @@ button:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-form {
+} */
+/* form {
   min-height: 64%;
   display: flex;
   flex-direction: column;
@@ -59,7 +83,7 @@ form {
   padding-bottom: 35px;
   justify-content: center;
   position: relative;
-}
+} */
 app-button{
   margin-top: 20px;
 }
@@ -76,8 +100,8 @@ app-button{
   bottom: 10px;
 }
 .text-danger small {
-  color: #ff4d4d !important; /* لون أحمر ناعم */
-  font-weight: bold; /* خط عريض */
+  color: #ff4d4d !important; 
+  font-weight: bold; 
 }
 .btn-success {
   background-color: #66ad5f;
@@ -95,10 +119,10 @@ app-button{
   text-decoration: underline;
   color: #559a50 !important;
 }
-img {
+/* img {
   max-height: 400px;
   width: auto;
-}
+} */
 @media only screen and (max-width: 920px) {
   .img {
     display: none;
@@ -114,5 +138,8 @@ img {
   }
   .form-control {
     width: 90%;
+  }
+  .form{
+    height: 500px;
   }
 }

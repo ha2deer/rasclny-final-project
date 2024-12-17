@@ -1,6 +1,7 @@
 div {
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 label {
@@ -12,7 +13,7 @@ label {
 }
 
 input {
-  width: 364px;
+  /* width: 364px;
   height: 46px;
   padding: 12px 13px;
   margin-top: 3px;
@@ -20,19 +21,39 @@ input {
   border-radius: 2px;
   font-size: 14px;
   line-height: 20px;
+  color: #1f1f1f; */
+  width: 100%; /* يجعل العرض مرنًا */
+  max-width: 364px; /* أقصى عرض */
+  height: 46px;
+  padding: 12px 40px 12px 13px; /* تعديل الـ padding للأيقونات */
+  margin-top: 3px;
+  border: 1px solid #e0e0e0;
+  border-radius: 2px;
+  font-size: 14px;
+  line-height: 20px;
   color: #1f1f1f;
 }
-.email {
+.email,
+.password {
+  position: absolute;
+  top: 50%; /* وسط الـ input */
+  transform: translateY(-50%); /* لضبط التمركز */
+  right: 10px; /* موضع الأيقونة الأيمن */
+  cursor: pointer;
+  width: 20px; /* حجم مناسب */
+  height: 20px}
+
+/* .email {
   position: absolute;
   left: 331px;
   top: 20px;
-}
-.password {
+} */
+/* .password {
   position: absolute;
   left: 331px;
   top: 18px;
   cursor: pointer;
-}
+} */
 @media only screen and (max-width: 420px) {
   input {
     width: auto;
@@ -42,5 +63,32 @@ input {
   }
   .password {
     left: 170px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  input {
+    max-width: 100%; /* عرض كامل الحاوية */
+    padding-right: 35px; /* تأكيد مكان الأيقونة */
+  }
+  .email,
+  .password {
+    right: 5px; /* تقليل المسافة في الشاشات الصغيرة */
+    width: 18px;
+    height: 18px;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  label {
+    font-size: 10px; /* تقليل حجم الليبل */
+  }
+  input {
+    height: 42px; /* تصغير الارتفاع */
+    padding: 10px 30px 10px 10px;
+  }
+  .email,
+  .password {
+    width: 16px;
+    height: 16px;
   }
 }

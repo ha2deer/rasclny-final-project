@@ -10,7 +10,7 @@
   </div>
 
   <!-- Search Bar -->
-  <div class="search-box">
+  <!-- <div class="search-box">
     <button class="btn-search">
       <img
         class="search-icon"
@@ -19,7 +19,7 @@
       />
     </button>
     <input type="text" class="input-search" placeholder="Type to Search..." />
-  </div>
+  </div> -->
 
   <input type="checkbox" id="toggle">
   <label for="toggle"><i class="fa-solid fa-bars"></i></label>
@@ -52,7 +52,7 @@
     </div>
     
 
-    <!-- Conditional Profile and Login -->
+
     <div *ngIf="isAuth; else loginTemplate" class="profile" (click)="toggleDropdown()">
     
       <img 
