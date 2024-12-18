@@ -32,6 +32,13 @@ footer {
  
   
 }
+.list p {
+ padding-top: 5px;
+  /* height: inherit; */
+}
+.list p:hover{
+color:white;
+}
 
 .footer-section h2 {
   line-height: 60px;
@@ -44,9 +51,7 @@ footer {
   margin-top: 10px; 
    /* border-right: 3px rgb(105, 105, 105) solid;  */
 }
-/* .number{
-  color:white;
-} */
+
 .app-button{
   width: 200px;
   height: 60px;
@@ -217,4 +222,16 @@ li a {
   .flex-Row{
     margin-bottom: 10px;
   }
+}
+@media (max-width: 340px) {
+.footer-section{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.list{
+/* margin-left: 300px; */
+}
+
 }

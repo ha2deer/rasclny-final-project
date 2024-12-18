@@ -98,7 +98,7 @@ justify-content: space-between;
 }
 .glow-on-hover:before {
     content: '';
-    /* background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000); */
+   
     background: linear-gradient(45deg, #c0ce40, #a5f0a9, #1ee661, #48ff00, #000000, #fffc34, #148346, #5d9974, #fcfcfc);
     position: absolute;
     top: -2px;
@@ -261,12 +261,13 @@ justify-content: space-between;
   }
   @media screen and (max-width: 430px) {
     .content-section {
-      flex-direction: column; /* توزيع الكروت عموديًا */
-      gap: 10px;
+      display: none;
     }
-  
+  .content{
+    margin-top: 300px;
+  }
     .card {
-      flex: 1 1 100%; /* جعل عرض الكرت 100% */
+      flex: 1 1 100%;
     max-width: 90%;
     }
   
@@ -306,15 +307,3 @@ justify-content: space-between;
       display: none;
         }
   }
-  /* .content-section {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    padding: 40px 20px;
-    background-color: #f4f4f9; /* لون الخلفية */
-  
-  
-  /* .sele{
-    di
-  } */
