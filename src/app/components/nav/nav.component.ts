@@ -13,6 +13,7 @@ export class NavComponent implements OnInit {
   isDropdownVisible = false;
   isCartVisible = false;
   cartCount: number = 0;
+
   userAvatar: string = 'https://img.freepik.com/premium-vector/user-profile-icon-flat-style-member-avatar-vector-illustration-isolated-background-human-permission-sign-business-concept_157943-15752.jpg';
 
   categoryClass = 'link';
@@ -49,7 +50,15 @@ export class NavComponent implements OnInit {
     this.cartService.state$.subscribe((cart) => {
       this.cartCount = Array.from(cart.values()).reduce((acc, item) => acc + item.totalAmount, 0);
     });
+
+
+
+
+
   }
+
+
+
 
   private updateCategoryClass(url: string): void {
     this.categoryClass = url.slice(1) === 'singleProduct' || url.slice(1) === 'products' ? 'link active' : 'link';
