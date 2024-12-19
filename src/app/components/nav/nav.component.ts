@@ -9,20 +9,20 @@ import { CartService } from 'src/app/services/cart.service'; // Ensure CartServi
   styleUrls: ['./nav.component.css'],
 })
 export class NavComponent implements OnInit {
-  isAuth: boolean = false; 
-  isDropdownVisible = false; 
-  isCartVisible = false; 
-  cartCount: number = 0; 
+  isAuth: boolean = false;
+  isDropdownVisible = false;
+  isCartVisible = false;
+  cartCount: number = 0;
   userAvatar: string = 'https://img.freepik.com/premium-vector/user-profile-icon-flat-style-member-avatar-vector-illustration-isolated-background-human-permission-sign-business-concept_157943-15752.jpg';
 
-  categoryClass = 'link'; 
-  menuOpen: boolean = false; 
-  isMobile: boolean = window.innerWidth <= 768; 
+  categoryClass = 'link';
+  menuOpen: boolean = false;
+  isMobile: boolean = window.innerWidth <= 768;
 
   constructor(
-    private router: Router, 
-    private authService: AuthenticationService, 
-    private cartService: CartService 
+    private router: Router,
+    private authService: AuthenticationService,
+    private cartService: CartService
   ) {}
 
   ngOnInit(): void {
@@ -30,17 +30,17 @@ export class NavComponent implements OnInit {
     this.loadUserAvatar();
 
     this.authService.status().subscribe((isLoggedIn) => {
-      this.isAuth = isLoggedIn; 
+      this.isAuth = isLoggedIn;
     });
 
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        this.checkAuthStatus(); 
+        this.checkAuthStatus();
         this.loadUserAvatar();
         this.updateCategoryClass(event.url);
       }
     });
-  
+
 
     // Get the initial cart count
     this.cartCount = this.cartService.getCartCount();
@@ -57,7 +57,7 @@ export class NavComponent implements OnInit {
 
   private checkAuthStatus(): void {
     const user = localStorage.getItem('user');
-    this.isAuth = !!user; 
+    this.isAuth = !!user;
   }
 
   private loadUserAvatar(): void {
@@ -71,28 +71,33 @@ export class NavComponent implements OnInit {
   }
 
   toggleDropdown(): void {
-    this.isDropdownVisible = !this.isDropdownVisible; 
+    this.isDropdownVisible = !this.isDropdownVisible;
   }
 
   logOut(): void {
     this.authService.logout(true).subscribe({
       next: () => {
-        localStorage.removeItem('user'); 
-        this.isAuth = false; 
-        this.router.navigate(['/auth']); 
+        localStorage.removeItem('user');
+        this.isAuth = false;
+        this.router.navigate(['/auth']);
       },
       error: (err) => {
+        // Clear user data from localStorage
+        localStorage.removeItem('user');
+
+        // Update authentication state
+
         console.error('Error during logout:', err);
       },
     });
   }
 
   toggleMenu(): void {
-    this.menuOpen = !this.menuOpen; 
+    this.menuOpen = !this.menuOpen;
   }
 
   @HostListener('window:resize', ['$event'])
   onResize(): void {
-    this.isMobile = window.innerWidth <= 768; 
+    this.isMobile = window.innerWidth <= 768;
   }
 }

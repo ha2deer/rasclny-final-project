@@ -32,6 +32,11 @@ export class LogoutComponent implements OnInit {
         this.router.navigate(['/']);
       },
       error: (err) => {
+        // Clear user data from localStorage
+        localStorage.removeItem('user');
+
+        // Update authentication state
+        this.auth.toggleLogin(false);
         console.error('Error during logout:', err);
 
         // Redirect to the home page even if logout fails
