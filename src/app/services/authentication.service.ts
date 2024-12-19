@@ -9,6 +9,8 @@ const BACKEND_URL = "https://recycle.kero-dev.tech/api";
   providedIn: 'root',
 })
 export class AuthenticationService {
+  public apiUrl = `${BACKEND_URL}`;
+
   private isLoggedIn = new BehaviorSubject<boolean>(false);
 
   constructor(private http: HttpClient) {}
@@ -48,6 +50,10 @@ export class AuthenticationService {
     );
   }
 
+
+
+
+
   // Fetch User Info
   user(): Observable<any> {
     const token = this.getToken();
@@ -61,7 +67,7 @@ export class AuthenticationService {
     );
   }
 
-  // Logout
+    // Logout
   logout(allDevice: boolean): Observable<any> {
     const token = this.getToken();
     if (!token) return throwError(() => new Error('Authentication token is missing. Please log in again.'));
@@ -116,9 +122,9 @@ export class AuthenticationService {
   updateProfile(data: any, userId: number): Observable<any> {
     const token = this.getToken();
     if (!token) return throwError(() => new Error('Authentication token is missing. Please log in again.'));
-  
+
     const headers = this.createHeaders(token);
-  
+
     return this.http.post(`${BACKEND_URL}/profile/update/${userId}`, data, { headers }).pipe(
       catchError((error) => {
         console.error('Error updating profile:', error);
@@ -142,12 +148,12 @@ export class AuthenticationService {
       phone,
       gender,
     };
-  
+
     // Set the headers
     const headers = new HttpHeaders({
       Accept: 'application/json',
     });
-  
+
     // Make the HTTP POST request with headers
     return this.http.post(`${BACKEND_URL}/auth/register`, data, { headers }).pipe(
       catchError((error) => {
@@ -160,7 +166,7 @@ export class AuthenticationService {
       })
     );
   }
-  
+
 
   // Forgot Password
   forgot(email: string): Observable<any> {
@@ -188,7 +194,7 @@ export class AuthenticationService {
   }
 
   // Utility: Get Token from Local Storage
-  private getToken(): string | null {
+  public getToken(): string | null {
     const user = localStorage.getItem('user');
     return user ? JSON.parse(user).token : null;
   }

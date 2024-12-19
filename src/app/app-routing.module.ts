@@ -18,6 +18,7 @@ import { RequestComponent } from './pages/request/request.component';
 import { SinglProductComponent } from './pages/singl-product/singl-product.component';
 import { AuthGuard } from './services/auth.guard';
 import { NoAuthGuard } from './services/no-auth.guard';
+import {OrderCompletedComponent} from "./pages/order-completed/order-completed.component";
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'products/:id', component: ProductsComponent }, // Corrected dynamic route
@@ -32,12 +33,13 @@ const routes: Routes = [
   {path: 'about' , component:AboutusComponent },
   { path: 'profile', component: ProfileComponent , canActivate:[AuthGuard]},
   {path: 'edite', component: EditProfileComponent, canActivate:[AuthGuard]},
+  { path: 'order/completed', component: OrderCompletedComponent, canActivate:[AuthGuard]},
   {path: 'product-point', component:ProductPointsComponent},
   {path: 'chat', component: ChatbootComponent },
   {path: 'our', component:OurComponent},
   {path:'ponintreq', component:ProductCAardComponent},
   { path: '**', redirectTo: '/intro' },
-  
+
 ];
 
 @NgModule({

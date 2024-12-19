@@ -7,6 +7,12 @@
     font-family: "Open Sans", sans-serif;
     font-optical-sizing: auto;
 }
+/* Ensuring the page container takes at least full viewport height */
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 body {
   --sb-track-color: #232E33;
   --sb-thumb-color:  rgba(89, 160, 83, 1);
@@ -25,14 +31,14 @@ body::-webkit-scrollbar-track {
 body::-webkit-scrollbar-thumb {
   background: var(--sb-thumb-color);
   border-radius: 3px;
-  
+
 }
 
 @supports not selector(::-webkit-scrollbar) {
   body {
     scrollbar-color: var(--sb-thumb-color)
                      var(--sb-track-color);
-                    
+
   }
 }
 /* You can add global styles to this file, and also import other style files */
@@ -85,9 +91,9 @@ table {
     --Main-color: #6ADD2A;
     --secondaryColor:#59A053;
     --Event-color: #E8DC05;
-    --My-Color-Theme-2-hex-color: #05E811; 
-    --My-Color-Theme-3-hex-color: #54E805; 
-    --My-Color-Theme-5-hex-color: #05E85F; 
+    --My-Color-Theme-2-hex-color: #05E811;
+    --My-Color-Theme-3-hex-color: #54E805;
+    --My-Color-Theme-5-hex-color: #05E85F;
 }
 /*
 *common styles

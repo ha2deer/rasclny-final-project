@@ -1,6 +1,9 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable,throwError } from 'rxjs';
 import { CartItem, products } from '../types/dataType';
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { catchError } from 'rxjs/operators';
+import { AuthenticationService } from './authentication.service';
 
 @Injectable({
   providedIn: 'root',
@@ -8,6 +11,7 @@ import { CartItem, products } from '../types/dataType';
 export class CartService {
   private _state: BehaviorSubject<Map<string, CartItem>> = new BehaviorSubject<Map<string, CartItem>>(new Map());
   public readonly state$: Observable<Map<string, CartItem>> = this._state.asObservable();
+  constructor(private http: HttpClient, private authService: AuthenticationService) {}
 
   /**
    * Get the total count of items in the cart
@@ -165,12 +169,23 @@ export class CartService {
    * Remove all items from the cart
    * @returns {CartItem[]} An array of items that were in the cart before clearing
    */
+
   public removeCart(): CartItem[] {
     const currentCart = this._state.getValue().values();
     this._state.next(new Map());
     localStorage.removeItem('cart');
     return Array.from(currentCart);
   }
+
+
+  // Get Cart
+
+  public getCart(): CartItem[] {
+    const currentCart = this._state.getValue().values();
+    return Array.from(currentCart);
+  }
+
+
 
   /**
    * Update localStorage and the observable state
@@ -180,5 +195,24 @@ export class CartService {
     const cartObj = Object.fromEntries(updatedCart.entries());
     localStorage.setItem('cart', JSON.stringify(cartObj));
     this._state.next(updatedCart);
+  }
+
+
+  submitOrder(order: any): Observable<any> {
+    const token = this.authService.getToken();
+    if (!token) {
+      return throwError(() => new Error('Authentication token is missing. Please log in again.'));
+    }
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`,
+      'Accept': 'application/json'
+    });
+
+    return this.http.post(`${this.authService.apiUrl}/orders/submit`, order, { headers }).pipe(
+      catchError((error) => {
+        return throwError(() => new Error(error.error.message || 'An error occurred'));
+      })
+    );
   }
 }

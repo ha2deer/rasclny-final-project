@@ -1,7 +1,10 @@
 import { Component, Input, OnChanges, SimpleChanges, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CartItem } from 'src/app/types/dataType';
+import { Router } from '@angular/router'; // Import Router if you need to navigate
+
 import { CartService } from 'src/app/services/cart.service';
+import {AuthenticationService} from "../../services/authentication.service";
 
 @Component({
   selector: 'app-right-request',
@@ -19,7 +22,9 @@ export class RightRequestComponent implements OnInit, OnChanges {
   totalPrice: number = 0;  // Total price
   totalPoints: number = 0; // Total points
 
-  constructor(private cart: CartService) {}
+  constructor(
+    private cart: CartService, private router: Router) {}
+
 
   ngOnInit(): void {
     this.date.setDate(this.date.getDate() + 3);
@@ -71,27 +76,36 @@ export class RightRequestComponent implements OnInit, OnChanges {
       return;
     }
 
-    const cart = this.cart.removeCart();
-    const order = {
-      cart,
+    const order1 = {
+      cart: this.cart.getCart(),
       paymentMethod,
       totalPrice: this.totalPrice,
       totalPoints: this.totalPoints,
       ...this.applyForm.value,
     };
 
-    console.log(order);
+    this.cart.submitOrder(order1).subscribe({
+      next: (response) => {
 
-    const ordersStr = localStorage.getItem('orders') || JSON.stringify([]);
-    const orders = JSON.parse(ordersStr);
-    orders.push(order);
-    localStorage.setItem('orders', JSON.stringify(orders));
+        this.cart.removeCart();
+        this.router.navigate(['/order/completed']);
 
-    this.applyForm.reset();
-    this.error = '';
+
+
+        this.applyForm.reset();
+        this.error = '';
+      },
+      error: (err) => {
+        console.error('Submission failed:', err.message);
+        this.error = err.message;
+      }
+    });
   }
 
+
   paymentSubmitHandler() {
+
+
     this.submitOrder('Instant');
   }
 }

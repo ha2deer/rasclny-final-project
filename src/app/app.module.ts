@@ -50,6 +50,7 @@ import { IntroComponent } from './pages/intro/intro.component';
 import { PointCardComponent } from './pages/product-caard/point-card/point-card.component';
 import { ProductCAardComponent } from './pages/product-caard/product-caard.component';
 import { RequestPointComponent } from './pages/request-point/request-point.component';
+import { OrderCompletedComponent } from './pages/order-completed/order-completed.component';
 
 
   @NgModule({
@@ -96,6 +97,7 @@ import { RequestPointComponent } from './pages/request-point/request-point.compo
       RequestPointComponent,
       PointCardComponent,
       ProductCAardComponent,
+      OrderCompletedComponent,
     ],
     imports: [
       BrowserModule,
