@@ -18,8 +18,8 @@ export class PointsComponent implements OnInit {
   private getUserPoints(): void {
     this.authService.showProfile().subscribe({
       next: (response) => {
-        if (response && response.points !== undefined) {
-          this.userPoints = response.points; // Update user points
+        if (response && response.point !== undefined) {
+          this.userPoints = response.point; // Update user points
         }
       },
       error: (error) => {
